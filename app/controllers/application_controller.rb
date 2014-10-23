@@ -8,5 +8,10 @@ class ApplicationController < ActionController::Base
 def party(url)
 	HTTParty.get(url)
 end 
+  def current_user
+  	@current_user ||= User.where(:id => session[:user_id]).first 
+  	#where will refer to an array, while find will refer to one id! This will find an id related to the user who logs in
+  	#.first will refer to the id 
+  end
 
 end

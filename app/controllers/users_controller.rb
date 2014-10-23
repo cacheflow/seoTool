@@ -13,34 +13,29 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user_id.to_s
-      redirect_to user_path
-    else
-      redirect_to new_user_path
-    end
+    User.delete_all
+    @user = User.new(params.require(:user).permit(:website))
+     @user.save
+      redirect_to users_path
   end
 
   def edit
   end
 
   def update
+
   end
 
   def destroy
 
   end
 
-  def user_params
-    params.require(:user).permit(:website, :email)
+  private
+
+  def moz
+    @websiteurl = User.last.website
+    client = Linkscape::Client.new(:accessID => "", :secret => "")
+    @response = client.urlMetrics(@websiteurl, :cols => :all)
+     @response
+    end
   end
-
-end
-
-
-def moz
-  client = Linkscape::Client.new(:accessID => "", :secret => "")
-  @response = client.urlMetrics("http://moz.com", :cols => :all)
-  return @response
-end
