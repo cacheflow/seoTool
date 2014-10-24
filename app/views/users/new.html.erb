@@ -1,6 +1,7 @@
     <section class="user-form">
+    
         <h1>SEARCH YOUR SITE~!~!~!!~~!~!!</h1>
-        <%= form_for @user do |f| %>
+        <%= form_for @user, :remote => true do |f| %>
         	<%= f.text_field :website, placeholder: 'website', class: 'form-control' %>
         	<%#= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
         	<%#= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
@@ -8,5 +9,9 @@
         	
         	<%= f.submit "Submit", class: 'btn btn-submit' %>
         <% end %>
+        </div>
     </section>
 
+
+<div id="results">
+</div>
