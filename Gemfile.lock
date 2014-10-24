@@ -31,6 +31,8 @@ GEM
     bcrypt (3.1.7)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.2.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -135,6 +137,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  bootstrap-sass
   coffee-rails (~> 4.0.0)
   did_you_mean
   httparty

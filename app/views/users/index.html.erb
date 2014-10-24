@@ -1,8 +1,35 @@
+
+<%#= @linkscape.data %>
+<%#= debug(@linkscape) %>
+
+Cancal Url: <%= @linkscape.data[:url] %>
+
+
+<p>The CONGRATS U HAVE IT</p>
+
+Title: <%= @linkscape.data[:ut] %>
+<br>
+
+Page Author: <%= @linkscape.data[:page_authority] %>
+
+<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+
+domain_authority: <%= @linkscape.data[:domain_authority] %>
+
+<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+<div id="donut-example"></div>
+
 <script type="text/javascript">
+var start = Date.now();
 callbacks.displayPageSpeedScore = function(result) {
 	
 
   var score = result.score;
+   $(function() {
+    $( "#progressbar" ).progressbar({
+      value: score
+    });
+  });
   // Construct the query to send to the Google Chart Tools.
   var query = [
     'chtt=Page+Speed+score:+' + score,
@@ -50,6 +77,8 @@ callbacks.displayTopPageSpeedSuggestions = function(result) {
 // Helper function that sorts results in order of impact.
 function sortByImpact(a, b) { return b.impact - a.impact; }
 </script>
+
+
 <script>
 var RESOURCE_TYPE_INFO = [
   {label: 'JavaScript', field: 'javascriptResponseBytes', color: 'e2192c'},
@@ -60,6 +89,7 @@ var RESOURCE_TYPE_INFO = [
   {label: 'Text', field: 'textResponseBytes', color: 'ad6bc5'},
   {label: 'Other', field: 'otherResponseBytes', color: '1051e8'},
 ];
+
 
 callbacks.displayResourceSizeBreakdown = function(result) {
   var stats = result.pageStats;
@@ -79,8 +109,13 @@ callbacks.displayResourceSizeBreakdown = function(result) {
       labels.push(label);
       data.push(val);
       colors.push(color);
+
     }
+ 
   }
+<%= render "morris_chart" %>
+
+
   // Construct the query to send to the Google Chart Tools.
   var query = [
     'chs=300x140',
@@ -97,22 +132,14 @@ callbacks.displayResourceSizeBreakdown = function(result) {
   i.src = 'http://chart.apis.google.com/chart?' + query;
   document.body.insertBefore(i, null);
 };
+
+
+
+
+
+
 </script>
-<%#= @linkscape.data %>
-<%#= debug(@linkscape) %>
-
-Cancal Url: <%= @linkscape.data[:url] %>
-
-
-<p>The CONGRATS U HAVE IT</p>
-
-Title: <%= @linkscape.data[:ut] %>
-<br>
-
-Page Author: <%= @linkscape.data[:page_authority] %>
-
-<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
-
-domain_authority: <%= @linkscape.data[:domain_authority] %>
-
-<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+<div id="progressbar"></div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
