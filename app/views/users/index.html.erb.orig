@@ -1,7 +1,5 @@
 <script type="text/javascript">
 callbacks.displayPageSpeedScore = function(result) {
-	
-
   var score = result.score;
   // Construct the query to send to the Google Chart Tools.
   var query = [
@@ -44,9 +42,26 @@ callbacks.displayTopPageSpeedSuggestions = function(result) {
   }
 };
 
+<<<<<<< Updated upstream
 
 
 
+Cancal Url: <%= @linkscape.data[:url] %>
+
+
+<p>The CONGRATS U HAVE IT</p>
+
+Title: <%= @linkscape.data[:ut] %>
+<br>
+
+Page Author: <%= @linkscape.data[:page_authority] %>
+
+<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+
+domain_authority: <%= @linkscape.data[:domain_authority] %>
+
+<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+=======
 // Helper function that sorts results in order of impact.
 function sortByImpact(a, b) { return b.impact - a.impact; }
 </script>
@@ -100,19 +115,4 @@ callbacks.displayResourceSizeBreakdown = function(result) {
 </script>
 <%#= @linkscape.data %>
 <%#= debug(@linkscape) %>
-
-Cancal Url: <%= @linkscape.data[:url] %>
-
-
-<p>The CONGRATS U HAVE IT</p>
-
-Title: <%= @linkscape.data[:ut] %>
-<br>
-
-Page Author: <%= @linkscape.data[:page_authority] %>
-
-<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
-
-domain_authority: <%= @linkscape.data[:domain_authority] %>
-
-<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+>>>>>>> Stashed changes
