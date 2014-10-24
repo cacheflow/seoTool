@@ -78,17 +78,17 @@ callbacks.displayPageSpeedScore = function(result) {
       value: score
     });
   });
-  var query = [
-    'chtt=Page+Speed+score:+' + score,
-    'chs=180x100',
-    'cht=gom',
-    'chd=t:' + score,
-    'chxt=x,y',
-    'chxl=0:|' + score,
-  ].join('&');
-  var i = document.createElement('img');
-  i.src = CHART_API_URL + query;
-  document.body.insertBefore(i, null);
+  // var query = [
+  //   'chtt=Page+Speed+score:+' + score,
+  //   'chs=180x100',
+  //   'cht=gom',
+  //   'chd=t:' + score,
+  //   'chxt=x,y',
+  //   'chxl=0:|' + score,
+  // ].join('&');
+  // var i = document.createElement('img');
+  // i.src = CHART_API_URL + query;
+  // document.body.insertBefore(i, null);
 };
 </script>
 <script>
@@ -155,7 +155,8 @@ callbacks.displayResourceSizeBreakdown = function(result) {
       colors.push(color);
     }
   }
-  Morris.Donut({
+
+    Morris.Donut({
   element: 'donut-example',
   data: [
 
@@ -169,21 +170,23 @@ callbacks.displayResourceSizeBreakdown = function(result) {
 });
 
   // Construct the query to send to the Google Chart Tools.
-  var query = [
-    'chs=300x140',
-    'cht=p3',
-    'chts=' + ['000000', 16].join(','),
-    'chco=' + colors.join('|'),
-    'chd=t:' + data.join(','),
-    'chdl=' + labels.join('|'),
-    'chdls=000000,14',
-    'chp=1.6',
-    'chds=0,' + largestSingleCategory,
-  ].join('&');
-  var i = document.createElement('img');
-  i.src = 'http://chart.apis.google.com/chart?' + query;
-  document.body.insertBefore(i, null);
+  // var query = [
+  //   'chs=300x140',
+  //   'cht=p3',
+  //   'chts=' + ['000000', 16].join(','),
+  //   'chco=' + colors.join('|'),
+  //   'chd=t:' + data.join(','),
+  //   'chdl=' + labels.join('|'),
+  //   'chdls=000000,14',
+  //   'chp=1.6',
+  //   'chds=0,' + largestSingleCategory,
+  // ].join('&');
+  // var i = document.createElement('img');
+  // i.src = 'http://chart.apis.google.com/chart?' + query;
+  // document.body.insertBefore(i, null);
 };
+
+
 </script>
 <%#= @linkscape.data %>
 
