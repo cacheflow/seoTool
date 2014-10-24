@@ -34,8 +34,8 @@ class UsersController < ApplicationController
 
   def moz
     @websiteurl = User.last.website
-    client = Linkscape::Client.new(:accessID => "", :secret => "")
-    @response = client.urlMetrics(@websiteurl, :cols => :all)
-     @response
+   client = Linkscape::Client.new(:accessID => "member-63b9543870", :secret => "b2e74984407f85cd3a39f6ff29fb7b08")
+    @response = client.urlMetrics("http://moz.com", :cols => :all)
+    puts response 
     end
   end
