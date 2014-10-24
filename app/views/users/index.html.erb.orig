@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+
+<%#= @linkscape.data %>
+<%#= debug(@linkscape) %>
+
+Cancal Url: <%= @linkscape.data[:url] %>
+
+
+<p>The CONGRATS U HAVE IT</p>
+
+Title: <%= @linkscape.data[:ut] %>
+<br>
+
+Page Author: <%= @linkscape.data[:page_authority] %>
+
+<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+
+domain_authority: <%= @linkscape.data[:domain_authority] %>
+
+<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+<div id="donut-example"></div>
+=======
 <script>
 // Specify your actual API key here:
 var API_KEY = '';
@@ -66,8 +88,10 @@ function runPagespeedCallbacks(result) {
 // synchronous in your code.
 setTimeout(runPagespeed, 0);
 </script>
+>>>>>>> ee06953d10a46a4ec2702d49889ec4fefaf3e492
 
 <script type="text/javascript">
+var start = Date.now();
 callbacks.displayPageSpeedScore = function(result) {
 	
 
@@ -124,6 +148,8 @@ callbacks.displayTopPageSpeedSuggestions = function(result) {
 // Helper function that sorts results in order of impact.
 function sortByImpact(a, b) { return b.impact - a.impact; }
 </script>
+
+
 <script>
 var RESOURCE_TYPE_INFO = [
   {label: 'JavaScript', field: 'javascriptResponseBytes', color: 'e2192c'},
@@ -134,6 +160,7 @@ var RESOURCE_TYPE_INFO = [
   {label: 'Text', field: 'textResponseBytes', color: 'ad6bc5'},
   {label: 'Other', field: 'otherResponseBytes', color: '1051e8'},
 ];
+
 
 callbacks.displayResourceSizeBreakdown = function(result) {
   var stats = result.pageStats;
@@ -153,7 +180,9 @@ callbacks.displayResourceSizeBreakdown = function(result) {
       labels.push(label);
       data.push(val);
       colors.push(color);
+
     }
+ 
   }
 <%= render "morris_chart" %>
 
@@ -174,25 +203,30 @@ callbacks.displayResourceSizeBreakdown = function(result) {
   i.src = 'http://chart.apis.google.com/chart?' + query;
   document.body.insertBefore(i, null);
 };
+<<<<<<< HEAD
+
+=======
+</script>
+<%#= @linkscape.data %>
 
 
 
 
 Cancal Url: <%#= @linkscape.data.first[:anchor][:text] %>
+>>>>>>> ee06953d10a46a4ec2702d49889ec4fefaf3e492
 
 
-<p>The CONGRATS U HAVE IT</p>
 
-Title: <%= @linkscape.data[:ut] %>
-<br>
 
-Page Author: <%= @linkscape.data[:page_authority] %>
 
+<<<<<<< HEAD
 </script>
 <div id="progressbar"></div>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script><p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+=======
+<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
 
 domain_authority: <%= @linkscape.data[:pda]  %>
 
@@ -226,3 +260,4 @@ domain_authority: <%= @linkscape.data[:pda]  %>
 <%= x[:source][:url] %>
 <% end %>
 <br>
+>>>>>>> ee06953d10a46a4ec2702d49889ec4fefaf3e492

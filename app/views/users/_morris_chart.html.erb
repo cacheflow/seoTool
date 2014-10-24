@@ -1,0 +1,12 @@
+Morris.Donut({
+	element: 'donut-example',
+	data: [
+
+	    {label: labels[0], value:  data[0]},
+	    {label: labels[1], value:  data[1]},
+	    {label: labels[2], value:  data[2]},
+	    {label: labels[3], value:  data[3]},
+	    {label: labels[4], value:  data[4]}
+		],
+		formatter: function(y){return "Bytes: " + y }
+});
