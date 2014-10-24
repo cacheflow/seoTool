@@ -1,6 +1,6 @@
 <script>
 // Specify your actual API key here:
-var API_KEY = '';
+var API_KEY = "AIzaSyAcVobYKOdT4ZJGAVqSq06VrrgxPDwKJBY";
 
 // Specify the URL you want PageSpeed results for here:
 <% @website =  User.last.website %> 
@@ -217,23 +217,60 @@ domain_authority: <%= @linkscape.data[:pda]  %>
 <B> TOP PAGES FOR THIS SITE</B>
 
 
+<div class="container">
+  <div class="row">
+    
+        <div class="timeline-centered">
+
+        <article class="timeline-entry">
+
+            <div class="timeline-entry-inner">
+
+                <div class="timeline-icon bg-success">
+                    <i class="entypo-feather"></i>
+                </div>
+
+                <div class="timeline-label">
+                    <h2><a href="#">Top Links</a></h2>
+                    <p>      <% @top.data.each do |x|%>
+              
+                        <%= x[:source][:url] %>
+                      <% end %>
+                    </p>
+                </div>
+            </div>
+
+        </article>
 
 
-<%@toppages.data.each do |d| %>
-  <br>
-  <%= d[:url] %>
+  <article class="timeline-entry">
 
-  <% end %>
-  <br>
+            <div class="timeline-entry-inner">
+
+                <div class="timeline-icon bg-secondary">
+                    <i class="entypo-suitcase"></i>
+                </div>
+
+                <div class="timeline-label">
+                    <h2><a href="#">Job Meeting</a></h2>
+                    <p>
+                          
+                         <% @top.data.each do |x|%>
+              
+                        <%= x[:source][:url] %>
+                      <% end %>
+
+                    </p>
+                </div>
+            </div>
+
+        </article>
+
 
 
 <b> TOP REF LINKS </b>
   
-<% @top.data.each do |x|%>
-<br>
-<%= x[:source][:url] %>
-<% end %>
-<br>
+
 
 <div id="donut-example"></div>
 <div id="progressbar"></div>
