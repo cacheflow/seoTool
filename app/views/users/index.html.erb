@@ -72,12 +72,12 @@ callbacks.displayPageSpeedScore = function(result) {
 	
 
   var score = result.score;
-   $(function() {
+  // Construct the query to send to the Google Chart Tools.
+    $(function() {
     $( "#progressbar" ).progressbar({
       value: score
     });
   });
-  // Construct the query to send to the Google Chart Tools.
   var query = [
     'chtt=Page+Speed+score:+' + score,
     'chs=180x100',
@@ -155,8 +155,18 @@ callbacks.displayResourceSizeBreakdown = function(result) {
       colors.push(color);
     }
   }
-<%= render "morris_chart" %>
+  Morris.Donut({
+  element: 'donut-example',
+  data: [
 
+      {label: labels[0], value:  data[0]},
+      {label: labels[1], value:  data[1]},
+      {label: labels[2], value:  data[2]},
+      {label: labels[3], value:  data[3]},
+      {label: labels[4], value:  data[4]}
+    ],
+    formatter: function(y){return "Bytes: " + y }
+});
 
   // Construct the query to send to the Google Chart Tools.
   var query = [
@@ -174,6 +184,8 @@ callbacks.displayResourceSizeBreakdown = function(result) {
   i.src = 'http://chart.apis.google.com/chart?' + query;
   document.body.insertBefore(i, null);
 };
+</script>
+<%#= @linkscape.data %>
 
 
 
@@ -188,11 +200,7 @@ Title: <%= @linkscape.data[:ut] %>
 
 Page Author: <%= @linkscape.data[:page_authority] %>
 
-</script>
-<div id="progressbar"></div>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script><p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
 
 domain_authority: <%= @linkscape.data[:pda]  %>
 
@@ -226,3 +234,10 @@ domain_authority: <%= @linkscape.data[:pda]  %>
 <%= x[:source][:url] %>
 <% end %>
 <br>
+
+<div id="donut-example"></div>
+<div id="progressbar"></div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
