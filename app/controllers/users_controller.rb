@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @linkscape = moz
+    @toppages = top_pages
+    @anchorlinks = anchor
+    @top = top_links
   end
 
   def show
@@ -31,11 +34,32 @@ class UsersController < ApplicationController
   end
 
   private
+  def top_links
+    
+    @websiteurl = User.last.website
+    client = Linkscape::Client.new(:accessID => "", :secret => "")
+    @response =  client.allLinks(@websiteurl, :urlcols => [:title, :url, :page_authority, :domain_authority], :linkcols => :all, :filters => :external, :limit => 5, :scope => :page_to_domain)
+    @response
+  end
+
+  def anchor
+    @websiteurl = User.last.website
+    client = Linkscape::Client.new(:accessID => "", :secret => "")
+    @response = client.anchorMetrics(@websiteurl, :cols => :all, :scope => "page_to_domain", :filters => :external, :sort => :domains_linking_page, :limit => 5, :scope => :phrase_to_page)
+    @response
+  end
+
+  def top_pages
+    @websiteurl = User.last.website
+    client = Linkscape::Client.new(:accessID => "", :secret => "")
+    @response = client.topPages(@websiteurl, :page, :cols => :all, :limit => 5)
+    @response
+  end
 
   def moz
     @websiteurl = User.last.website
-    client = Linkscape::Client.new(:accessID => "member-63b9543870", :secret => "b2e74984407f85cd3a39f6ff29fb7b08")
+    client = Linkscape::Client.new(:accessID => "", :secret => "")
     @response = client.urlMetrics(@websiteurl, :cols => :all)
-     @response
-    end
+    @response
   end
+end
