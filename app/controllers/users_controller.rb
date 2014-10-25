@@ -12,33 +12,25 @@ class UsersController < ApplicationController
   end
 
   def new
-        @linkscape = moz
-    @toppages = top_pages
-    @anchorlinks = anchor
-    @top = top_links
+
     @user = User.new
-             respond_to do |format|
-     format.html
-     format.js
    end
-  end
+  
 
   def create
-        @linkscape = moz
+    User.delete_all
+
+    
+    @user = User.new(params.require(:user).permit(:website))
+     @user.save
+    redirect_to users_path
+    @linkscape = moz
     @toppages = top_pages
     @anchorlinks = anchor
     @top = top_links
-    User.delete_all
-    @user = User.new(params.require(:user).permit(:website))
-     @user.save
-      
-        
-             respond_to do |format|
-     format.html
-     format.js
    end
 
-  end
+
 
   def edit
   end
@@ -50,7 +42,6 @@ class UsersController < ApplicationController
   def destroy
 
   end
-
   private
   def top_links
     

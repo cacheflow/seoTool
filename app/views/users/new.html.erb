@@ -1,17 +1,23 @@
-    <section class="user-form">
-    
-        <h1>SEARCH YOUR SITE~!~!~!!~~!~!!</h1>
-        <%= form_for @user, :remote => true do |f| %>
-        	<%= f.text_field :website, placeholder: 'website', class: 'form-control' %>
-        	<%#= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
-        	<%#= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
-        	<%#= f.password_field :password_confirmation, placeholder: 'Re-type password', class: 'form-control' %>
-        	
-        	<%= f.submit "Submit", class: 'btn btn-submit' %>
-        <% end %>
-        </div>
-    </section>
 
+<div class="container">
+    <div class="row">
+           <div id="custom-search-input">
+                    <%= form_for @user, :remote => true do |f| %>
 
-<div id="results">
+                            <div class="input-group col-md-12">
+                                <%= f.search_field :website, placeholder: 'Analyze a site', class: "search-query form-control" %>                                
+                                <span class="input-group-btn">
+                                <%= f.submit "Submit", class: "btn btn-danger" %>
+
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                </span>
+                            </div>
+                        </div>
+    </div>
 </div>
+<% end %> 
+
+
+
+
+        

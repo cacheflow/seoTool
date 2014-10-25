@@ -15,6 +15,7 @@ gem "httparty"
 gem 'bootstrap-sass'
 gem 'did_you_mean', group: [:development, :test]
 gem "figaro"
+gem "bootstrap_form"
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem "sidekiq"
