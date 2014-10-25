@@ -1,6 +1,6 @@
 <script>
 // Specify your actual API key here:
-var API_KEY = "AIzaSyAcVobYKOdT4ZJGAVqSq06VrrgxPDwKJBY";
+var API_KEY = ENV["API_KEY"];
 
 // Specify the URL you want PageSpeed results for here:
 <% @website =  User.last.website %> 
@@ -235,10 +235,10 @@ domain_authority: <%= @linkscape.data[:pda]  %>
 
                 <div class="timeline-label">
                     <h2><a href="#">Top Links</a></h2>
-                    <p>      <% @top.data.each do |x|%>
+                    <p>      <% @top.data do |t|%>
               
                         <%= x[:source][:url] %>
-                      <% end %>
+                      <% end %> 
                     </p>
                 </div>
             </div>

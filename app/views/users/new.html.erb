@@ -1,8 +1,7 @@
-
 <div class="container">
     <div class="row">
            <div id="custom-search-input">
-                    <%= form_for @user, :remote => true do |f| %>
+                    <%= form_for @user do |f| %>
 
                             <div class="input-group col-md-12">
                                 <%= f.search_field :website, placeholder: 'Analyze a site', class: "search-query form-control" %>                                
@@ -16,8 +15,3 @@
     </div>
 </div>
 <% end %> 
-
-
-
-
-        
