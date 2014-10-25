@@ -1,23 +1,42 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+*{
+	font-family: "Lato", sans-serif;
+}
 
 body{
 	background-image: url("cream_pixels.png")
 }
 
-/*.user-form{
-	margin: 200px auto;
+#huge-div {
 	height: 500px;
 	width: 450px;
+	position: relative;
 }
 
-.sub-button{
-	margin: 300px;
+.container{
+	margin: 260px auto;
 	position: absolute;
-	color: #2980b9;
-}*/
+	padding: 0px;
+}
+
+
+
+.eclogo{
+	margin: 0px 200px;
+	padding: 0px;
+	position: absolute;
+}
+
+#eclogotext{
+	font-size: 14px;	
+	padding: 0px;
+	margin: 20px, 200px;
+	
+}
+
+
 
 img {
     vertical-align: middle;
