@@ -1,6 +1,348 @@
+
+<%#= @linkscape.data %>
+<!-- Title: <%#= debug(@linkscape.data) %> -->
+<!-- <br>
+
+Page Author: <%= @linkscape.data[:page_authority] %>
+
+<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+ -->
+
+
+<%#= debug(@anchorlinks)%>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <div id="errors" class="alert alert-danger">
+  </div>
+  
+   
+      <div class="container-fluid main-content">
+        <div class="page-title pull-center">
+          <h1>
+            Timeline
+          </h1>
+        </div>
+        <ul class="timeline">
+          <li>
+            <div class="timeline-time">
+             Cancal Url
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-primary">
+                <i class="icon-pencil"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                Cancal Url
+              </h2>
+              <p>
+                <% if @linkscape.data[:canonical_url] == '' %>
+<br>
+              Cripes! Do you realise that there are two versions of all your pages - one with 'www' and one without? You need to choose a 'canonical' format and redirect to this version - but don't expect me to explain exactly how here; we've only got a limited amount of characters
+              <% else %>
+Bravo! Whether you meant it or not, it looks like there's a redirect in place to ensure that only one version of your page loads whether or not you use the 'www' bit.
+              <% end %>
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+        Domain Authority
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-warning">
+                <i class="icon-quote-right"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+              Domain Authority
+              </h2>
+                <p>
+                Site score:  <%= @linkscape.data[:pda]  %>
+                <br>
+                <% if (80...100).include?(@linkscape.data[:pda]) %>
+                  
+                  NICE
+                  <% elsif  (50...80).include?(@linkscape.data[:pda]) %> %>
+                  its ok i guess
+                  <% else%>
+                  nah not good at all man
+                  <% end %>
+
+
+
+
+<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
+
+
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              Anchor Links
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-info">
+                <i class="icon-camera"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+               Anchor Links
+              </h2>
+         
+              <p>
+             
+
+<% @anchorlinks.data.each do |x| %>
+
+<%= x[:anchor][:text] %> - External Pages Linking to Anchor Text: <%= x[:anchor][:external_pages_linking] %>
+<% end %>
+<br>
+<br>
+This shows you what words people are using to link to your site (what SEO nerds call 'anchor text'). You want to be seeing a lot of your brand terms here (the top one in particular should be your brand or website address). Below that is the external number of pages that link to that anchor text.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              External Links
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-danger">
+                <i class="icon-pencil"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+               Number of external links to site
+              </h2>
+              
+
+<p>The number of external links to the URL, including nofollowed links
+<br>
+<%= @linkscape.data[:ued] %></p>
+
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              Top Pages
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-success">
+                <i class="icon-camera"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                Top Pages For This Site
+              </h2>
+              <p>
+                
+
+
+<%@toppages.data.each do |d| %>
+  <br>
+  <%= d[:url] %>
+
+  <% end %>
+  <br>
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+            Improve Load Times
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-primary">
+                <i class="icon-facetime-video"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+               Suggestions to improve page time:
+              </h2>
+           
+  
+  <div id="pageloadresults">
+</div>
+  
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+                Top Ref Links
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-warning">
+                <i class="icon-pencil"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                Top Reffering Links to This Site
+              </h2>
+              <p>
+          <% @top.data.each do |x|%>
+          <br>
+          <%= x[:source][:url] %>
+          <% end %>
+          <br>
+           </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+             Composed Of
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-success">
+                <i class="icon-time"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                Languages and Frameworks that make up the site
+              </h2>
+              <p>
+        <div id="donut-example"></div>
+
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              Load time ranking
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-info">
+                <i class="icon-camera"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                Load time ranking
+              </h2>
+             <p>
+             <div id="progressbar"></div>
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              <strong>Oct 8</strong>2:01 PM
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-danger">
+                <i class="icon-pencil"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                This is a title for this timeline post
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+              </p>
+              <p>
+                Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.
+              </p>
+              <p>
+                Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              <strong>Oct 11</strong>10:33 AM
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-success">
+                <i class="icon-camera"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                This is a title for this timeline post
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              <strong>Oct 12</strong>1:14 PM
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-primary">
+                <i class="icon-facetime-video"></i>
+              </div>
+            </div>
+            <div class="timeline-content video">
+              <h2>
+                This is a title for this timeline post
+              </h2>
+              <iframe allowfullscreen="" frameborder="0" mozallowfullscreen="" src="http://player.vimeo.com/video/16202331?title=0&amp;byline=0&amp;portrait=0" webkitallowfullscreen=""></iframe>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              <strong>Oct 18</strong>8:45 AM
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-warning">
+                <i class="icon-pencil"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing
+              </h2>
+              <p>
+                Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              <strong>Oct 21</strong>9:55 AM
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-success">
+                <i class="icon-time"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                This is a title for this timeline post
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
 <script>
 // Specify your actual API key here:
-var API_KEY = ENV["API_KEY"];
+var API_KEY = '';
 
 // Specify the URL you want PageSpeed results for here:
 <% @website =  User.last.website %> 
@@ -44,7 +386,8 @@ function runPagespeedCallbacks(result) {
       } else {
         // NOTE: your real production app should use a better
         // mechanism than alert() to communicate the error to the user.
-        alert(errors[i].message);
+        
+     document.getElementById("errors").innerHTML = "Sorry! An error occured while attempting to analyize your site. Please refresh the page and try again to get complete analytics";
       }
     }
     return;
@@ -69,7 +412,7 @@ setTimeout(runPagespeed, 0);
 
 <script type="text/javascript">
 callbacks.displayPageSpeedScore = function(result) {
-	
+  
 
   var score = result.score;
   // Construct the query to send to the Google Chart Tools.
@@ -103,19 +446,30 @@ callbacks.displayTopPageSpeedSuggestions = function(result) {
                   impact: ruleResult.ruleImpact});
   }
   results.sort(sortByImpact);
-  var ul = document.createElement('ul');
+  // var ul = document.createElement('ul');
   for (var i = 0, len = results.length; i < len; ++i) {
     var r = document.createElement('li');
-    r.innerHTML = results[i].name;
-    ul.insertBefore(r, null);
+    // var lis = document.getElementById("pageloadresults").createElement("li");
+
+
+    // var pageload = document.getElementById('pageloadresults');
+
+
+var stuff = document.getElementById("pageloadresults");
+var li = document.createElement("li");
+li.appendChild(document.createTextNode(results[i].name));
+stuff.appendChild(li);
+     // lis.innerHTML =  results[i].name;
+
+    // ul.insertBefore(r, null);
   }
-  if (ul.hasChildNodes()) {
-    document.body.insertBefore(ul, null);
-  } else {
-    var div = document.createElement('div');
-    div.innerHTML = 'No high impact suggestions. Good job!';
-    document.body.insertBefore(div, null);
-  }
+  // if (ul.hasChildNodes()) {
+  //   document.body.insertBefore(ul, null);
+  // } else {
+  //   var div = document.createElement('div');
+  //   div.innerHTML = 'No high impact suggestions. Good job!';
+  //   document.body.insertBefore(div, null);
+  // }
 };
 
 
@@ -188,84 +542,7 @@ callbacks.displayResourceSizeBreakdown = function(result) {
 
 
 </script>
-<%#= @linkscape.data %>
 
-
-
-
-Cancal Url: <%#= @linkscape.data.first[:anchor][:text] %>
-
-
-<p>The CONGRATS U HAVE IT</p>
-
-Title: <%= @linkscape.data[:ut] %>
-<br>
-
-Page Author: <%= @linkscape.data[:page_authority] %>
-
-<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
-
-domain_authority: <%= @linkscape.data[:pda]  %>
-
-<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
-<br>
-
-<b> ANCHOR LINKS </b>
-<% @anchorlinks.data.each do |x| %>
-<br>
-<%= x[:anchor][:text] %>
-
-<% end %>
-<br>
-<B> TOP PAGES FOR THIS SITE</B>
-
-
-<div class="container">
-  <div class="row">
-    <div class="timeline-centered">
-      <article class="timeline-entry">
-        <div class="timeline-entry-inner">
-          <div class="timeline-icon bg-success">
-            <i class="entypo-feather"></i>
-          </div>
-        <div class="timeline-label">
-          <h2><a href="#">Top Links</a></h2>
-          <p>     
-            <% @top.data do |t|%>
-              <%= x[:source][:url] %>
-            <% end %> 
-          </p>
-        </div>
-      </div>
-    </article>
-
-
-    <article class="timeline-entry">
-      <div class="timeline-entry-inner">
-        <div class="timeline-icon bg-secondary">
-          <i class="entypo-suitcase"></i>
-        </div>
-
-        <div class="timeline-label">
-          <h2><a href="#">Job Meeting</a></h2>
-          <p>
-            <% @top.data.each do |x|%>
-              <%= x[:source][:url] %>
-            <% end %>
-          </p>
-        </div>
-      </div>
-    </article>
-  </div>  
-</div>
-
-<b> TOP REF LINKS </b>
-  
-
-
-<div id="donut-example"></div>
-<div id="progressbar"></div>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
+<!-- <div id="pageloadresults">
+Suggestions to improve load times:
+</div> -->
