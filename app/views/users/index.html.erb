@@ -222,54 +222,42 @@ domain_authority: <%= @linkscape.data[:pda]  %>
 
 <div class="container">
   <div class="row">
-    
-        <div class="timeline-centered">
-
-        <article class="timeline-entry">
-
-            <div class="timeline-entry-inner">
-
-                <div class="timeline-icon bg-success">
-                    <i class="entypo-feather"></i>
-                </div>
-
-                <div class="timeline-label">
-                    <h2><a href="#">Top Links</a></h2>
-                    <p>      <% @top.data do |t|%>
-              
-                        <%= x[:source][:url] %>
-                      <% end %> 
-                    </p>
-                </div>
-            </div>
-
-        </article>
+    <div class="timeline-centered">
+      <article class="timeline-entry">
+        <div class="timeline-entry-inner">
+          <div class="timeline-icon bg-success">
+            <i class="entypo-feather"></i>
+          </div>
+        <div class="timeline-label">
+          <h2><a href="#">Top Links</a></h2>
+          <p>     
+            <% @top.data do |t|%>
+              <%= x[:source][:url] %>
+            <% end %> 
+          </p>
+        </div>
+      </div>
+    </article>
 
 
-  <article class="timeline-entry">
+    <article class="timeline-entry">
+      <div class="timeline-entry-inner">
+        <div class="timeline-icon bg-secondary">
+          <i class="entypo-suitcase"></i>
+        </div>
 
-            <div class="timeline-entry-inner">
-
-                <div class="timeline-icon bg-secondary">
-                    <i class="entypo-suitcase"></i>
-                </div>
-
-                <div class="timeline-label">
-                    <h2><a href="#">Job Meeting</a></h2>
-                    <p>
-                          
-                         <% @top.data.each do |x|%>
-              
-                        <%= x[:source][:url] %>
-                      <% end %>
-
-                    </p>
-                </div>
-            </div>
-
-        </article>
-
-
+        <div class="timeline-label">
+          <h2><a href="#">Job Meeting</a></h2>
+          <p>
+            <% @top.data.each do |x|%>
+              <%= x[:source][:url] %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>  
+</div>
 
 <b> TOP REF LINKS </b>
   
