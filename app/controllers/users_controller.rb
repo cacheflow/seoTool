@@ -46,28 +46,28 @@ class UsersController < ApplicationController
   def top_links
     
     @websiteurl = User.last.website
-    client = Linkscape::Client.new(:accessID => ENV["ACCESS_ID"], :secret => ENV["SECRET_KEY"])
+    client = Linkscape::Client.new(:accessID => '', :secret => '')
     @response =  client.allLinks(@websiteurl, :urlcols => [:title, :url, :page_authority, :domain_authority], :linkcols => :all, :filters => :external, :limit => 5, :scope => :page_to_domain)
     @response
   end
 
   def anchor
     @websiteurl = User.last.website
-    client = Linkscape::Client.new(:accessID => ENV["ACCESS_ID"], :secret => ENV["SECRET_KEY"])
+    client = Linkscape::Client.new(:accessID => '', :secret => '')
     @response = client.anchorMetrics(@websiteurl, :cols => :all, :scope => "page_to_domain", :filters => :external, :sort => :domains_linking_page, :limit => 5, :scope => :phrase_to_page)
     @response
   end
 
   def top_pages
     @websiteurl = User.last.website
-    client = Linkscape::Client.new(:accessID => ENV["ACCESS_ID"], :secret => ENV["SECRET_KEY"])
+    client = Linkscape::Client.new(:accessID => '', :secret => '')
     @response = client.topPages(@websiteurl, :page, :cols => :all, :limit => 5)
     @response
   end
 
   def moz
     @websiteurl = User.last.website
-    client = Linkscape::Client.new(:accessID => ENV["ACCESS_ID"], :secret => ENV["SECRET_KEY"])
+    client = Linkscape::Client.new(:accessID => '', :secret => '')
     @response = client.urlMetrics(@websiteurl, :cols => :all)
     @response
   end
