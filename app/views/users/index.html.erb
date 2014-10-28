@@ -47,12 +47,12 @@ $(function() {
 
 
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-  <div id="errors">
+  <div id="errors" style="text-align: center">
   </div>
   
    
       <div class="container-fluid main-content">
-        <div class="page-title">
+        <div class="page-title" style="text-align: center">
           <h1>
             Your Results
           </h1>
@@ -153,8 +153,8 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
         
               <p>
 
-              
-<% if @anchorlinks.data[:data] == nil %>
+  <% if @anchorlinks.data.first  == nil %>
+
   This site doesn't have any anchor links.
   <% else %>
 <table class="table">
@@ -198,13 +198,13 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
             </div>
             <div class="timeline-content">
               <p>    
-<% if @toppages.data[:data] == nil %>
+<% if @toppages.data.first  == nil %>
 <h2>  <div title="Displays the top 5 pages that are performing the best on your domain."
         class="resetPrice"
         data-placement='bottom'>
     <i class="fa fa-question-circle fa-1x"></i>
                    Top 5 Pages</h2>    
-                   <p> Unfortunately, it seems that your site is too small to find out the top pages on your domain.   
+                   <p> Unfortunately, it seems that your site is too small to find out the top pages on your domain   
 <% else %> 
 
 <table class="table">
@@ -251,7 +251,8 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
             <div class="timeline-content">
               
               <p>
-<% if @toppages.data[:data] == nil %>
+
+<% if @top.data.first  == nil %>
   <h2><div title="The top pages that link and send traffic to your website."
         class="resetPrice"
         data-placement='bottom'>
@@ -317,6 +318,8 @@ Looks like you've got a few links. How many you should have really depends on th
 <% end %>
             </div>
           </li>
+          
+
              <li>
             <div class="timeline-time">
               Load Times
@@ -380,6 +383,7 @@ Looks like you've got a few links. How many you should have really depends on th
               </p>
             </div>
           </li>
+          
        <!-- 
           <li>
             <div class="timeline-time">
