@@ -22,15 +22,13 @@ class UsersController < ApplicationController
     User.delete_all
 
     
-    @user = User.new(params.require(:user).permit(:website, :email))
+    @user = User.new(params.require(:user).permit(:website))
      @user.save
-     
     redirect_to users_path
     @linkscape = moz
     @toppages = top_pages
     @anchorlinks = anchor
     @top = top_links
-
    end
 
   def update

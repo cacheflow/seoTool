@@ -95,29 +95,7 @@ dl {
 /*----------------------------------------------------------------------------------- */
 /*  Background color helper classes */
 /*----------------------------------------------------------------------------------- */
-.bg-primary, .bg-success, .bg-info, .bg-warning, .bg-danger, .bg-muted {
-  color: white; }
 
-.bg-primary {
-  background-color: #007aff; }
-
-.bg-success {
-  background-color: #60c560; }
-
-.bg-info {
-  background-color: #5bc0de; }
-
-.bg-warning {
-  background-color: #f0ad4e; }
-
-.bg-danger {
-  background-color: #d9534f; }
-
-.bg-muted {
-  background-color: #bbbbbb; }
-
-.bg-white {
-  background-color: white; }
 
 /*----------------------------------------------------------------------------------- */
 /*  Login 1 */
