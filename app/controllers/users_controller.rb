@@ -21,8 +21,10 @@ class UsersController < ApplicationController
     User.delete_all
 
     
-    @user = User.new(params.require(:user).permit(:website))
+    @user = User.new(params.require(:user).permit(:website, :email))
      @user.save
+     UserMailer.welcome_email(@user).deliver
+     
     redirect_to users_path
     @linkscape = moz
     @toppages = top_pages

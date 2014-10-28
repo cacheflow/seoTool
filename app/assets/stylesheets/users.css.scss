@@ -1,6 +1,3 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 *{
 	font-family: "Lato", sans-serif;
 }
@@ -10,12 +7,16 @@ body{
 }
 
 
+
 #eclogotext{
 	font-size: 14px;	
 }
 
-
-
 #logo {
     padding-left: 50px;
+}
+
+#logoindex{
+    height:75px;
+    width:auto;
 }
