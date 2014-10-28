@@ -10,7 +10,7 @@
 <!-- Title: <%#= debug(@linkscape.data) %> -->
 <!-- <br>
 
-Page Author: <%= @linkscape.data[:page_authority] %>
+Page Author: <%#= @linkscape.data[:page_authority] %>
 
 <p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
  -->
@@ -18,6 +18,15 @@ Page Author: <%= @linkscape.data[:page_authority] %>
 
 <%#= debug(@anchorlinks)%>
 
+<script>
+$(function() {
+    $('.resetPrice').tooltip();
+});
+</script>
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -25,20 +34,20 @@ Page Author: <%= @linkscape.data[:page_authority] %>
 
 
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-  <div id="errors" class="alert alert-danger">
+  <div id="errors">
   </div>
   
    
       <div class="container-fluid main-content">
         <div class="page-title pull-center">
           <h1>
-            Timeline
+            Your Results
           </h1>
         </div>
         <ul class="timeline">
           <li>
             <div class="timeline-time">
-             Cancal Url
+             Canonical Url
             </div>
             <div class="timeline-icon">
               <div class="bg-primary">
@@ -46,8 +55,15 @@ Page Author: <%= @linkscape.data[:page_authority] %>
               </div>
             </div>
             <div class="timeline-content">
-              <h2>
-                Cancal Url
+              <h2> <div title="Canonicalization refers to individual web pages that can be loaded from multiple URLs. This is a problem because when multiple pages have the same content but different URLs, links that are intended to go to the same page get split up among multiple URLs." 
+        class="resetPrice"
+        data-placement='top'>
+    <i class="fa fa-question-circle fa-1x"></i>
+                Canonical Url 
+</div>
+
+
+
               </h2>
               <p>
                 <% if @linkscape.data[:canonical_url] == '' %>
@@ -70,25 +86,23 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
             </div>
             <div class="timeline-content">
               <h2>
+               <div title="Domain authority is a measure of the power of a domain name and is one of many search engine ranking factors. Domain authority is based on three factors: Age, Popularity, and Size. Below you'll find your score based on a normalized 100-point score representing the likelihood of a page to rank well in search engine results."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
               Domain Authority
               </h2>
                 <p>
                 Site score:  <%= @linkscape.data[:pda]  %>
                 <br>
-                <% if (80...100).include?(@linkscape.data[:pda]) %>
+                <% if (80..100).include?(@linkscape.data[:pda]) %>
                   
-                  NICE
-                  <% elsif  (50...80).include?(@linkscape.data[:pda]) %> %>
+                  Wowzers! You must have some great links - what you have there is a pretty authoritative site.
+                  <% elsif  (50..79).include?(@linkscape.data[:pda]) %> %>
                   its ok i guess
                   <% else%>
                   nah not good at all man
                   <% end %>
-
-
-
-
-<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
-
 
             </div>
           </li>
@@ -103,21 +117,120 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
             </div>
             <div class="timeline-content">
               <h2>
+               <div title="This shows you what words people are using to link to your site ('anchor text'). You want to be seeing a lot of your brand terms here (the top one in particular should be your brand or website address). Below that is the external number of pages that link to that anchor text."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
                Anchor Links
               </h2>
-         
+        
               <p>
-             
 
-<% @anchorlinks.data.each do |x| %>
+<table class="table">
+                  <thead>
+                    <th>
+                      Anchor Link
+                    </th>
+                    <th>
+                      External Page Links
+                    </th>
+                   
+                  </thead>
+                  <tbody>
+                    <% @anchorlinks.data.each do |x| %>
+                    <tr>
+                      <td>
+                        <%= x[:anchor][:text] %>
+                      </td>
+                      <td>
+                        <%= x[:anchor][:external_pages_linking] %>
+                      </td>
+                    
+                    </tr>
 
-<%= x[:anchor][:text] %> - External Pages Linking to Anchor Text: <%= x[:anchor][:external_pages_linking] %>
-<% end %>
-<br>
-<br>
-This shows you what words people are using to link to your site (what SEO nerds call 'anchor text'). You want to be seeing a lot of your brand terms here (the top one in particular should be your brand or website address). Below that is the external number of pages that link to that anchor text.
+                  <% end %>              
+                  </tbody>
+                </table>
+         
               </p>
             </div>
+          </li>
+          
+          <li>
+            <div class="timeline-time">
+              Top Pages
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-success">
+                <i class="icon-camera"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <p>    
+            <table class="table">
+                  <thead>
+                    <th>
+                  <h2>  <div title="Displays the top 5 pages that are performing the best on your domain."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
+                   Top 5 Pages</h2>
+                    </th> 
+                  </thead>
+                  <tbody>
+                    <%@toppages.data.each do |d| %>
+                    <tr>
+                      <td>
+                        <%= d[:url] %>
+                      </td>
+                      
+                    </tr>
+
+                  <% end %>              
+                  </tbody>
+                </table>
+      <%#= debug(@toppages.data) %>
+              </p>
+            </div>
+          </li>
+          <li>
+
+            <div class="timeline-time">
+              Ref Links
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-warning">
+                <i class="icon-pencil"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              
+              <p>
+          <table class="table">
+                  <thead>
+                    <th>
+                           
+              <h2><div title="The top pages that link and send traffic to your website."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>Top Referring Links</h2>
+                    </th>
+                   
+                   
+                  </thead>
+                  <tbody>
+          <% @top.data.each do |x|%>
+                    <tr>
+                      <td>
+          <%= x[:source][:url] %>
+                      </td>
+                      
+                    </tr>
+
+                  <% end %>              
+                  </tbody>
+                </table>
+        <%#= debug(@top.data) %>
           </li>
           <li>
             <div class="timeline-time">
@@ -130,43 +243,22 @@ This shows you what words people are using to link to your site (what SEO nerds 
             </div>
             <div class="timeline-content">
               <h2>
-               Number of external links to site
+                 <div title="The number of external links to the URL, including nofollowed links. In layman's terms, if another website links to you, this is considered an external link to your site. Similarly, if you link out to another website, this is also considered an external link."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
+               Number of External Links
               </h2>
               
 
-<p>The number of external links to the URL, including nofollowed links
+<p>
+ <%=  number_with_delimiter(@linkscape.data[:ued]) %>
 <br>
-<%= @linkscape.data[:ued] %></p>
-
+<hr>
+Looks like you've got a few links. How many you should have really depends on the size of your business/site, but more importantly you should focus on getting quality links.</p>
             </div>
           </li>
-          <li>
-            <div class="timeline-time">
-              Top Pages
-            </div>
-            <div class="timeline-icon">
-              <div class="bg-success">
-                <i class="icon-camera"></i>
-              </div>
-            </div>
-            <div class="timeline-content">
-              <h2>
-                Top Pages For This Site
-              </h2>
-              <p>
-                
-
-
-<%@toppages.data.each do |d| %>
-  <br>
-  <%= d[:url] %>
-
-  <% end %>
-  <br>
-              </p>
-            </div>
-          </li>
-          <li>
+              <li>
             <div class="timeline-time">
             Improve Load Times
             </div>
@@ -177,6 +269,7 @@ This shows you what words people are using to link to your site (what SEO nerds 
             </div>
             <div class="timeline-content">
               <h2>
+
                Suggestions to improve page time:
               </h2>
            
@@ -188,29 +281,7 @@ This shows you what words people are using to link to your site (what SEO nerds 
           </li>
           <li>
             <div class="timeline-time">
-                Top Ref Links
-            </div>
-            <div class="timeline-icon">
-              <div class="bg-warning">
-                <i class="icon-pencil"></i>
-              </div>
-            </div>
-            <div class="timeline-content">
-              <h2>
-                Top Reffering Links to This Site
-              </h2>
-              <p>
-          <% @top.data.each do |x|%>
-          <br>
-          <%= x[:source][:url] %>
-          <% end %>
-          <br>
-           </p>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-time">
-             Composed Of
+             Resources
             </div>
             <div class="timeline-icon">
               <div class="bg-success">
@@ -219,7 +290,11 @@ This shows you what words people are using to link to your site (what SEO nerds 
             </div>
             <div class="timeline-content">
               <h2>
-                Languages and Frameworks that make up the site
+                   <div title="The below pie chart shows you the breakdown of resources that are on your site."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
+                Resource Size Breakdown
               </h2>
               <p>
         <div id="donut-example"></div>
@@ -393,8 +468,14 @@ function runPagespeedCallbacks(result) {
       } else {
         // NOTE: your real production app should use a better
         // mechanism than alert() to communicate the error to the user.
-        
-     document.getElementById("errors").innerHTML = "Sorry! An error occured while attempting to analyize your site. Please refresh the page and try again to get complete analytics";
+        var googleerror = document.getElementById("errors");
+// var danger = document.createElement("alert alert-danger");
+
+googleerror.className = "alert alert-danger"
+
+googleerror.innerHTML = "Sorry! An error occured while attempting to analyize your site. Please refresh the page and try again to get complete analytics";
+
+     // document.getElementById("errors").innerHTML = ;
       }
     }
     return;
