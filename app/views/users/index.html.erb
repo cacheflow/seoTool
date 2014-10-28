@@ -1,3 +1,4 @@
+
 <style>
 .bg-primary, .bg-success, .bg-info, .bg-warning, .bg-danger, .bg-muted {
   color: #fff; }
@@ -23,17 +24,6 @@
 .bg-white {
   background-color: white; }
 </style>
-<%#= @linkscape.data %>
-<!-- Title: <%#= debug(@linkscape.data) %> -->
-<!-- <br>
-
-Page Author: <%#= @linkscape.data[:page_authority] %>
-
-<p>A normalized 100-point score representing the likelihood of a page to rank well in search engine results</p>
- -->
-
-
-<%#= debug(@anchorlinks)%>
 
 <script>
 $(function() {
@@ -42,7 +32,13 @@ $(function() {
 </script>
 
 
-
+<div class="container">
+  <div class="row">
+    <div class=".col-md-4">
+      <img id="logoindex" src="<%=image_path("el-classificado-logo.png") %>"></img>
+    </div>
+  </div>
+</div>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
@@ -56,7 +52,7 @@ $(function() {
   
    
       <div class="container-fluid main-content">
-        <div class="page-title pull-center">
+        <div class="page-title">
           <h1>
             Your Results
           </h1>
