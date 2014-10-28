@@ -1,0 +1,141 @@
+<style>
+
+#circular{
+	margin-left: 150px;
+
+}
+
+.circular{
+	background-color:#5FB7FF;
+	float:left;
+	width:15px;	
+	height:15px;	
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-animation-name: bounce_circular;
+ 	-webkit-animation-duration: 0.7s;
+ 	-webkit-animation-iteration-count: infinite;
+ 	-webkit-animation-direction: linear;
+	}
+
+#circular_1{
+	margin-top:25px;
+ 	-webkit-animation-delay: .3s;
+}
+#circular_2{
+	margin-left:-8px;
+	margin-top:9px;
+ 	-webkit-animation-delay: .4s;
+}
+#circular_3{
+	margin-top:1px;
+ 	-webkit-animation-delay: .5s;
+}
+#circular_4{
+	margin-left:0;
+	margin-top:9px;
+ 	-webkit-animation-delay: .6s;
+}
+#circular_5{
+	margin-left:-8px;
+	margin-top:25px;
+ 	-webkit-animation-delay: .7s;
+}
+#circular_6{
+	margin-left:-22px;
+	margin-top:40px;
+ 	-webkit-animation-delay: .8s;
+}
+#circular_7{
+	margin-left:-37px;
+	margin-top:48px;
+ 	-webkit-animation-delay: .9s;
+}
+#circular_8{
+	margin-left:-53px;
+	margin-top:41px;
+ 	-webkit-animation-delay: 1s;
+}
+@-webkit-keyframes bounce_circular{
+	0%{-webkit-transform:scale(1);}
+	100%{-webkit-transform:scale(.3);}
+}
+
+<<<<<<< HEAD
+
+.btn-custom{
+	background-color: #1b59de;
+	color: white;
+}
+=======
+>>>>>>> 96800b1ab0df11e64b63e97e0dcef6b9043522e4
+</style>
+<div class="container" style="margin-top: 50px;">
+
+	<div class="row text-center">
+		<p class="eclogotext">SEO Tool Made With Love by:</p>
+	</div>
+
+	<div class="row text-center">
+		<img id="logo" src="<%=image_path("el-classificado-logo.png") %>"></img>
+	</div>
+
+	<div  class="row text-center">
+		<div class="col-sm-4 col-sm-offset-4">
+			<p>An SEO tool that shows potential issues with your website.</p>
+			<%= form_for @user, class:"form-signin" do |f| %>
+				<div class="form-group">
+					<%= f.search_field :website, placeholder: 'Analyze a site', class: "form-control text-center stuff", size:"55" %>
+				</div>  
+				<%= f.submit "Submit", class: "btn btn-custom stuff" %>
+			<% end %>
+		</div> 
+	</div>
+			<div class="row text-center">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div id='circular' style="display:none;">
+					<div id='circular_1' class='circular'></div>
+					<div id='circular_2' class='circular'></div>
+					<div id='circular_3' class='circular'></div>
+					<div id='circular_4' class='circular'></div>
+					<div id='circular_5' class='circular'></div>
+					<div id='circular_6' class='circular'></div>
+					<div id='circular_7' class='circular'></div>
+					<div id='circular_8' class='circular'></div>
+					<div class='clearfix'></div>
+				</div>
+			</div>
+		</div>
+	
+
+</div>
+		
+	<div class="row text-center">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div id='circular' style="display:none;">
+					<div id='circular_1' class='circular'></div>
+					<div id='circular_2' class='circular'></div>
+					<div id='circular_3' class='circular'></div>
+					<div id='circular_4' class='circular'></div>
+					<div id='circular_5' class='circular'></div>
+					<div id='circular_6' class='circular'></div>
+					<div id='circular_7' class='circular'></div>
+					<div id='circular_8' class='circular'></div>
+					<div class='clearfix'></div>
+				</div>
+			</div>
+		</div>
+
+</div>
+
+<script>
+
+	$(document).ready(
+		$('.btn').click(function(){
+			 $('.stuff').hide();
+			 $('.stuff').hide();
+			 $('#circular').show();
+
+		})
+	);
+</script>

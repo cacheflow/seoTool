@@ -56,6 +56,15 @@ $(function() {
 </script>
 
 
+ 
+
+
+
+
+
+
+
+
 <div class="container">
   <div class="row">
     <div class=".col-md-4">
@@ -527,6 +536,7 @@ Looks like you've got a few links. How many you should have really depends on th
       </div>
     </div>
 
+<<<<<<< HEAD
     <!-- <div id="updateEmail" class="row text-center stuff"> -->
       <!-- <div class="col-sm-4 col-sm-offset-4"> -->
         <%#= form_for @user, id: "contact_me", remote: true do |f| %>
@@ -585,8 +595,63 @@ $(function(){
         return false;
     });
 })
+=======
+    <div id="updateEmail" class="row text-center stuff">
+      <%#= render 'form' %>
+      <div class="col-sm-4 col-sm-offset-4">
+Get these results by email:
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.search_field :email, placeholder: 'Email', class: "form-control text-center stuff", size:"55" %>
+    </div>  
+    <%= f.submit "Submit", class: "btn btn-danger stuff" %>
+  <% end %>
+
+  <%= form_for @user, id: "contact_me", remote: true do %>
+   
+    <div>
+        <p><%= label_tag(:email, "Email") %>
+        <%= email_field(:user, :email) %></p>
+    </div>
+   
+   
+
+    <%= submit_tag("Say Hello!")%>
+<% end %>
+</div> 
 
 
+    </div>
+    <div style="display:none;" class="confirmation text-center alert alert-success">
+    <div style="display:none;" class="failure">Invalid Please Try Again</div>
+
+>>>>>>> 96800b1ab0df11e64b63e97e0dcef6b9043522e4
+
+
+
+
+
+
+
+<script>
+$(function(){
+    $("#contactme").submit(function(){
+        var dataSet = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            data: dataSet,
+            success: function(){
+                alert("Sent!");
+            },
+            error: function(){
+
+                alert("Something went wrong!");
+            }
+        });
+        return false;
+    });
+})
 </script>
 
 
@@ -627,6 +692,8 @@ function runPagespeed() {
   console.log(a);
   document.head.insertBefore(s, null);
 }
+
+
 
 // Our JSONP callback. Checks for errors, then invokes our callback handlers.
 function runPagespeedCallbacks(result) {

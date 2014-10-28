@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_filter  :verify_authenticity_token
-
+skip_before_filter  :verify_authenticity_token
   def index
+
     @users = User.all
     @user = User.last
     @linkscape = moz
@@ -22,17 +22,13 @@ class UsersController < ApplicationController
 
   def create
     User.delete_all
-
-    
-    @user = User.new(params.require(:user).permit(:website, :email))
+    @user = User.new(params.require(:user).permit(:website))
      @user.save
-     
     redirect_to users_path
     @linkscape = moz
     @toppages = top_pages
     @anchorlinks = anchor
     @top = top_links
-
    end
 
   def update
@@ -51,13 +47,10 @@ class UsersController < ApplicationController
     @anchorlinks = anchor
     @top = top_links
 
-
     UserMailer.welcome_email(@user, @linkscape, @toppages, @anchorlinks, @top).deliver
 
 
   end
-
-
 
   def destroy
 

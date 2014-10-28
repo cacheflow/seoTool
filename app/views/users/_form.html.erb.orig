@@ -1,0 +1,16 @@
+<<<<<<< HEAD
+=======
+<div class="col-sm-4 col-sm-offset-4">
+Get these results by email:
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.search_field :email, placeholder: 'Email', class: "form-control text-center stuff", size:"55" %>
+    </div>  
+    <%= f.submit "Submit", class: "btn btn-danger stuff" %>
+  <% end %>
+</div> 
+
+
+
+
+>>>>>>> 96800b1ab0df11e64b63e97e0dcef6b9043522e4
