@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 		@user = User.new
 	end
 
-	def create											#returns user object to access email
+	def create
 		@user = User.where(email: params[:session][:email]).first
 		if @user && @user.authenticate(params[:session][:password])
 			session[:user_id] = @user.id.to_s
