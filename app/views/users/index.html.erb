@@ -486,34 +486,68 @@ Looks like you've got a few links. How many you should have really depends on th
       </div>
     </div>
 
-    <div id="updateEmail" class="row text-center stuff">
-      <%= render 'form' %>
+    <!-- <div id="updateEmail" class="row text-center stuff"> -->
+      <!-- <div class="col-sm-4 col-sm-offset-4"> -->
+        <%#= form_for @user, id: "contact_me", remote: true do |f| %>
+          <!-- <div class="form-group"> -->
+            <%#= f.search_field :email, placeholder: 'Email', class: "form-control text-center stuff", size:"55" %>
+          <!-- </div>   -->
+          <%#= f.submit "Submit", class: "btn btn-danger stuff" %>
+        <%# end %>
+    <!-- </div>  -->
+
+
+
+
+
     </div>
-    <div style="display:none;" class="confirmation">Your Email Has Been Sent</div>
-    <div style="display:none;" class="failure">Invalid Please Try Again</div>
+    <div style="text-align: center" id="confirmation"></div>
+    <div style="text-align: center" id="didntsend"></div>
+
+    <div id="updateEmail" class="row text-center stuff">
+      <div class="col-sm-4 col-sm-offset-4">
+        <p>Get Your Results Sent to You</p>
+        <%= form_tag(@user, id: "contact_me", remote: "true") do %>
+          <div class="form-group">
+            <%= text_field(:user, :email, placeholder: 'Email', class: "form-control text-center stuff", size:"55") %></p>
+          </div>
+          <%= submit_tag("Submit", class: "btn btn-danger stuff")%>
+        <% end %>
+      </div>
+    </div> 
+
+
+
+
 
 <script>
-  $(document).ready(
-    $('.btn').click(function(){
+ 
+$(function(){
+    $("#contact_me").submit(function(){
+        var dataSet = $(this).serialize();
+        $.ajax({
+            type: "PATCH",
+            url: $(this).attr("action"),
+            data: dataSet,
+            success: function(){
+              $("#updateEmail").hide();
+              var itgotsent = document.getElementById("confirmation");
+              itgotsent.className = "alert alert-success" 
+              itgotsent.innerHTML = "Your Email Has Been Sent";
+            },
+            error: function(){
+              var itgotsent = document.getElementById("didntsend");
+              itgotsent.className = "alert alert-danger"
+              itgotsent.innerHTML = "Something went wrong with sending the email.";
+            }
+        });
+        return false;
+    });
+})
 
-       $('.stuff').hide();
-       
-       $( "#updateEmail" ).load("/users", function(status) {
-        
-        if(status){  
-          console.
-          $('.confirmation').show() ;
-        }
-        else{
-
-          $('.failure').show() ; 
-          $('.stuff').show();
-        }
-        });  
-    })
-  );
 
 </script>
+
 
 <script>
 // Specify your actual API key here:
