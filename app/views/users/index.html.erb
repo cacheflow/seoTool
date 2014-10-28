@@ -32,6 +32,10 @@ $(function() {
 </script>
 
 
+ <img id="base64"></img>
+
+
+
 <div class="container">
   <div class="row">
     <div class=".col-md-4">
@@ -113,7 +117,20 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
                   
                   Wowzers! You must have some great links - what you have there is a pretty authoritative site.
                   <% elsif  (50..79).include?(@linkscape.data[:pda]) %> %>
-                  This site is in the medium auth
+                Your domain authority is at a medium level. Don't worry about it too much, particularly if your site or business is relatively small, but as more people link to you your site will start to become more authoritative and trusted in it's own right.</p>
+                  
+                  <p>In the meantime, here are some tips to help your site grow:
+                 <br>
+                 
+                                  
+                  - Ensure that your technical SEO is in place.
+                  <br>
+                  - Create lots of linkable content.
+                  <br>
+                  - Develop strong internal linking.
+                  <br>
+                  - Regularly remove toxic backlinks.</p>
+                  
                   <% else%>
                   <p>Your domain authority is very low! Don't worry about it too much, particularly if your site or business is relatively small, but as more people link to you your site will start to become more authoritative and trusted in it's own right.</p>
                   
@@ -487,32 +504,60 @@ Looks like you've got a few links. How many you should have really depends on th
     </div>
 
     <div id="updateEmail" class="row text-center stuff">
-      <%= render 'form' %>
+      <%#= render 'form' %>
+      <div class="col-sm-4 col-sm-offset-4">
+Get these results by email:
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.search_field :email, placeholder: 'Email', class: "form-control text-center stuff", size:"55" %>
+    </div>  
+    <%= f.submit "Submit", class: "btn btn-danger stuff" %>
+  <% end %>
+
+  <%= form_for @user, id: "contact_me", remote: true do %>
+   
+    <div>
+        <p><%= label_tag(:email, "Email") %>
+        <%= email_field(:user, :email) %></p>
     </div>
-    <div style="display:none;" class="confirmation">Your Email Has Been Sent</div>
+   
+   
+
+    <%= submit_tag("Say Hello!")%>
+<% end %>
+</div> 
+
+
+    </div>
+    <div style="display:none;" class="confirmation text-center alert alert-success">
     <div style="display:none;" class="failure">Invalid Please Try Again</div>
 
+
+
+
+
+
+
+
 <script>
-  $(document).ready(
-    $('.btn').click(function(){
+$(function(){
+    $("#contactme").submit(function(){
+        var dataSet = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            data: dataSet,
+            success: function(){
+                alert("Sent!");
+            },
+            error: function(){
 
-       $('.stuff').hide();
-       
-       $( "#updateEmail" ).load("/users", function(status) {
-        
-        if(status){  
-          console.
-          $('.confirmation').show() ;
-        }
-        else{
-
-          $('.failure').show() ; 
-          $('.stuff').show();
-        }
-        });  
-    })
-  );
-
+                alert("Something went wrong!");
+            }
+        });
+        return false;
+    });
+})
 </script>
 
 <script>
@@ -544,12 +589,16 @@ function runPagespeed() {
   s.async = true;
   var query = [
     'url=' + URL_TO_GET_RESULTS_FOR,
+    'screenshot=true',
     'callback=runPagespeedCallbacks',
     'key=' + API_KEY,
   ].join('&');
-  s.src = API_URL + query;
+  var a = s.src = API_URL + query;
+  console.log(a);
   document.head.insertBefore(s, null);
 }
+
+
 
 // Our JSONP callback. Checks for errors, then invokes our callback handlers.
 function runPagespeedCallbacks(result) {
@@ -619,6 +668,26 @@ callbacks.displayPageSpeedScore = function(result) {
 };
 </script>
 <script>
+callbacks.displayScreenShot = function(result) {
+  var screenshot = result.screenshot.data;
+
+
+var s = screenshot.replace(/_/g, '/');
+
+var x = s.replace(/-/g, '+');
+
+
+  console.log(x)
+//   var  base = document.getElementById("base64");
+// base.innerHTML = screenshot 
+
+$("#base64").append("img").attr("src", "data:image/jpeg;base64," + x);
+
+}
+</script>
+
+<script>
+
 callbacks.displayTopPageSpeedSuggestions = function(result) {
   var results = [];
   var ruleResults = result.formattedResults.ruleResults;
