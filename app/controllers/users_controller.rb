@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user.save
     redirect_to users_path
   end
-
+ 
 
 
   def edit
