@@ -5,15 +5,15 @@
 	</div>
 
 	<div class="row text-center">
-		<img class="img-responsive text-center" id="logo" src="<%=image_path("el-classificado-logo.png") %>"></img>
-	</div>
+      <%=link_to image_tag("el-classificado-logo.png"), root_path, id: "logoindex" %> 
+     </div>
 
 	<div  class="row text-center">
 		<div class="col-sm-4 col-sm-offset-4">
 			<p>An SEO tool that shows potential issues with your website.</p>
 			<%= form_for @user, class:"form-signin" do |f| %>
 				<div class="form-group">
-					<%= f.search_field :website, placeholder: 'Analyze a site', class: "form-control text-center stuff", size:"55" %>
+					<%= f.search_field :website, placeholder: 'Analyze a site', class: "form-control text-center stuff", size:"140" %>
 				</div>  
 				<%= f.submit "Submit", class: "btn btn-custom stuff" %>
 			<% end %>

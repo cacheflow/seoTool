@@ -68,7 +68,8 @@ $(function() {
 <div class="container">
   <div class="row">
     <div class=".col-md-4">
-      <img id="logoindex" src="<%=image_path("el-classificado-logo.png") %>"></img>
+      <!-- <img id="logoindex" src="<%=image_path("el-classificado-logo.png") %>"> </img> -->
+      <%=link_to image_tag("el-classificado-logo.png"), root_path, id: "logoindex" %> 
     </div>
   </div>
 </div>
@@ -619,7 +620,7 @@ $(function(){
 
 <script>
 // Specify your actual API key here:
-var API_KEY = ENV["API_KEY"];
+var API_KEY = ENV["GOOGLE_KEY"];
 
 // Specify the URL you want PageSpeed results for here:
 <% @website =  User.last.website %> 
