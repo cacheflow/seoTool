@@ -660,7 +660,7 @@ function runPagespeedCallbacks(result) {
   if (result.error) {
     var errors = result.error.errors;
     for (var i = 0, len = errors.length; i < len; ++i) {
-      if (errors[i].reason == 'badRequest' && API_KEY == undefined) {
+      if (errors[i].reason == 'badRequest' && API_KEY == API_KEY) {
         alert('Please specify your Google API key in the API_KEY variable.');
       } else {
         // NOTE: your real production app should use a better
@@ -735,7 +735,7 @@ var x = s.replace(/-/g, '+');
 //   var  base = document.getElementById("base64");
 // base.innerHTML = screenshot 
 
-$("#base64").append("#logoindex").attr("src", "data:image/jpeg;base64," + x);
+$("#base64").append("img ").attr("src", "data:image/jpeg;base64," + x);
 
 }
 </script>
