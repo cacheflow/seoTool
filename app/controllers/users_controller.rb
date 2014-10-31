@@ -1,16 +1,22 @@
 class UsersController < ApplicationController
 
 
+   
 
   def index
-    @websiteurl = User.last.website
-    @user = User.new
     @users = User.all
     api
-  end
+   end
 
+
+def api
+      client = Linkscape::Client.new(:accessID => ENV["ACCESS_ID"], :secret => ENV["API_KEY"])
+      @linkscape = client.urlMetrics(User.last.website, :cols => :all)
+      @toppages = client.topPages(User.last.website, :page, :cols => :all, :limit => 5)
+      @anchorlinks = client.anchorMetrics(User.last.website, :cols => :all, :scope => "page_to_domain", :filters => :external, :sort => :domains_linking_page, :limit => 5, :scope => :phrase_to_page)
+      @top = client.allLinks(User.last.website, :urlcols => [:title, :url, :page_authority, :domain_authority], :linkcols => :all, :filters => :external, :limit => 5, :scope => :page_to_domain)
+  end 
  
-
 
 
 
@@ -25,12 +31,11 @@ class UsersController < ApplicationController
   
 
   def create
-    
     @user = User.new(params.require(:user).permit(:website))
     @user.save
     redirect_to users_path
-  end
- 
+    @user.destroy 
+end 
 
 
   def edit
@@ -41,22 +46,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
+    @user = User.find(params[:id])
+    @user.destroy 
   end
   
   
 
-private 
-     def api 
-      @websiteurl = User.last.website
-      client = Linkscape::Client.new(:accessID => ENV["ACCESS_ID"], :secret => ENV["API_KEY"])
-      @linkscape = client.urlMetrics(@websiteurl, :cols => :all)
-      @toppages = client.topPages(@websiteurl, :page, :cols => :all, :limit => 5)
-      @anchorlinks = client.anchorMetrics(@websiteurl, :cols => :all, :scope => "page_to_domain", :filters => :external, :sort => :domains_linking_page, :limit => 5, :scope => :phrase_to_page)
-      @top = client.allLinks(@websiteurl, :urlcols => [:title, :url, :page_authority, :domain_authority], :linkcols => :all, :filters => :external, :limit => 5, :scope => :page_to_domain)
-      return 
-    end 
-
-
-
+   
 end
