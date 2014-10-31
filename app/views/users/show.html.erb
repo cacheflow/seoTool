@@ -1,0 +1,856 @@
+<style>
+.bg-primary, .bg-success, .bg-info, .bg-warning, .bg-danger, .bg-muted {
+  color: #fff; }
+
+.bg-primary {
+  background-color: #007aff; }
+
+.bg-success {
+  background-color: #60c560; }
+
+.bg-info {
+  background-color: #5bc0de; }
+
+.bg-warning {
+  background-color: #f0ad4e; }
+
+.bg-danger {
+  background-color: #d9534f; }
+
+.bg-muted {
+  background-color: #bbbbbb; }
+
+.bg-white {
+  background-color: white; }
+</style>
+
+
+<style>
+.laptop-container{
+  margin: 0 auto;
+  height: 34em;
+  width: 55%;
+  background: url(assets/laptop.png) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100% auto;
+  position: relative;
+}
+  .laptop-screen{
+    width:auto;
+    height:100%;
+    text-align:center;
+    margin:0 auto;
+    /*padding: 0 0 44px 0;*/
+  }
+
+  .img-responsive{
+    position: inherit;
+    margin: 102px auto;
+    overflow: hidden;
+  }
+/*
+  #base64 {
+    width: 100%;
+    height: 100%;
+  }*/
+
+</style>
+
+<script>
+$(function() {
+    $('.resetPrice').tooltip();
+});
+</script>
+
+
+<div class="container">
+  <div class="row">
+    <div class=".col-md-4">
+      <!-- <img id="logoindex" src="<%=image_path("el-classificado-logo.png") %>"> </img> -->
+      <%=link_to image_tag("el-classificado-logo.png"), root_path, id: "logoindex" %> 
+    </div>
+  </div>
+</div>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <div id="errors" style="text-align: center">
+  </div>
+  
+  <div class="laptop-container">
+    <div class="laptop-screen">
+      <img class="img-responsive" id="base64"></img>
+    </div>
+  </div>
+
+      <div class="container-fluid main-content">
+        <div class="page-title" style="text-align: center">
+          <h1>
+            Your Results
+          </h1>
+        </div>
+        <ul class="timeline">
+          <li>
+            <div class="timeline-time">
+             Canonical Url
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-primary">
+                <i class="icon-unlink "></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2> <div title="Canonicalization refers to individual web pages that can be loaded from multiple URLs. This is a problem because when multiple pages have the same content but different URLs, links that are intended to go to the same page get split up among multiple URLs." 
+        class="resetPrice"
+        data-placement='top'>
+    <i class="fa fa-question-circle fa-1x"></i>
+                Canonical Url 
+</div>
+
+
+
+              </h2>
+              <p>
+                <% if @linkscape.data[:canonical_url] == '' %>
+<br>
+              Cripes! Do you realise that there are two versions of all your pages - one with 'www' and one without? You need to choose a 'canonical' format and redirect to this version - but don't expect me to explain exactly how here; we've only got a limited amount of characters
+              <% else %>
+Bravo! Whether you meant it or not, it looks like there's a redirect in place to ensure that only one version of your page loads whether or not you use the 'www' bit.
+              <% end %>
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+        Domain Authority
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-warning">
+                <i class="icon-bar-chart"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+               <div title="Domain authority is a measure of the power of a domain name and is one of many search engine ranking factors. Domain authority is based on three factors: Age, Popularity, and Size. Below you'll find your score based on a normalized 100-point score representing the likelihood of a page to rank well in search engine results."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
+              Domain Authority
+              </h2>
+                <p>
+                Site score:  <%= @linkscape.data[:pda]  %>
+                
+                <hr>
+                <% if (80..100).include?(@linkscape.data[:pda]) %>
+                  
+                  Wowzers! You must have some great links - what you have there is a pretty authoritative site.
+                  <% elsif  (50..79).include?(@linkscape.data[:pda]) %> 
+                Your domain authority is at a medium level. Don't worry about it too much, particularly if your site or business is relatively small, but as more people link to you your site will start to become more authoritative and trusted in it's own right.</p>
+                  
+                  <p>In the meantime, here are some tips to help your site grow:
+                 <br>
+                 
+                                  
+                  - Ensure that your technical SEO is in place.
+                  <br>
+                  - Create lots of linkable content.
+                  <br>
+                  - Develop strong internal linking.
+                  <br>
+                  - Regularly remove toxic backlinks.</p>
+                  
+                  <% else%>
+                  <p>Your domain authority is very low! Don't worry about it too much, particularly if your site or business is relatively small, but as more people link to you your site will start to become more authoritative and trusted in it's own right.</p>
+                  
+                  <p>In the meantime, here are some tips to help your site grow:
+                 <br>
+                 
+                                  
+                  - Ensure that your technical SEO is in place.
+                  <br>
+                  - Create lots of linkable content.
+                  <br>
+                  - Develop strong internal linking.
+                  <br>
+                  - Regularly remove toxic backlinks.</p>
+                  
+                  <% end %>
+
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              Anchor Links
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-info">
+                <i class=" icon-external-link-sign"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+               <div title="This shows you what words people are using to link to your site ('anchor text'). You want to be seeing a lot of your brand terms here (the top one in particular should be your brand or website address). Below that is the external number of pages that link to that anchor text."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
+               Anchor Links
+              </h2>
+        
+              <p>
+
+  <% if @anchorlinks.data.first  == nil %>
+
+  This site doesn't have any anchor links.
+  <% else %>
+<table class="table">
+                  <thead>
+                    <th>
+                      Anchor Link
+                    </th>
+                    <th>
+                      External Page Links
+                    </th>
+                   
+                  </thead>
+                  <tbody>
+                    <% @anchorlinks.data.each do |x| %>
+                    <tr>
+                      <td>
+                        <%= x[:anchor][:text] %>
+                      </td>
+                      <td>
+                        <%= x[:anchor][:external_pages_linking] %>
+                      </td>
+                    
+                    </tr>
+
+                  <% end %>              
+                  </tbody>
+                </table>
+         <% end %>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            <div class="timeline-time">
+              Top Pages
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-success">
+                <i class=" icon-star "></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <p>    
+<% if @toppages.data.first  == nil %>
+<h2>  <div title="Displays the top 5 pages that are performing the best on your domain."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
+                   Top 5 Pages</h2>    
+                   <p> Unfortunately, it seems that your site is too small to find out the top pages on your domain   
+<% else %> 
+
+<table class="table">
+                  <thead>
+                    <th>
+                  <h2>  <div title="Displays the top 5 pages that are performing the best on your domain."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
+                   Top 5 Pages</h2>
+                    </th> 
+                 
+
+    
+                  </thead>
+                  <tbody>
+
+
+                    <%@toppages.data.each do |d| %>
+                    <tr>
+                      <td>
+                        <%= d[:url] %>
+                      </td>
+                      
+                    </tr>
+
+                  <% end %>              
+                  </tbody>
+                </table>
+      <% end %>
+              </p>
+            </div>
+          </li>
+          <li>
+
+            <div class="timeline-time">
+              Ref Links
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-warning">
+                <i class="icon-link" ></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              
+              <p>
+
+<% if @top.data.first  == nil %>
+  <h2><div title="The top pages that link and send traffic to your website."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>Top Referring Links</h2>
+    <p>
+    Doesn't look like anyone is linking to to this site!
+    </p>
+
+<% else %>
+          <table class="table">
+                  <thead>
+                    <th>
+                           
+              <h2><div title="The top pages that link and send traffic to your website."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>Top Referring Links</h2>
+                    </th>
+                   
+                   
+                  </thead>
+                  <tbody>
+          <% @top.data.each do |x|%>
+                    <tr>
+                      <td>
+          <%= x[:source][:url] %>
+                      </td>
+                      
+                    </tr>
+
+                  <% end %>              
+                  </tbody>
+                </table>
+                <% end %>
+        <%#= debug(@top.data) %>
+          </li>
+          <li>
+            <div class="timeline-time">
+              External Links
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-danger">
+                <i class="icon-external-link"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                 <div title="The number of external links to the URL, including nofollowed links. In layman's terms, if another website links to you, this is considered an external link to your site. Similarly, if you link out to another website, this is also considered an external link."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
+               Number of External Links
+              </h2>
+              
+                <% if @linkscape.data[:ued] == 0 %>
+                <p>Doesn't look like you have any external links! </p>
+                <% else %>
+<p>
+ <%=  number_with_delimiter(@linkscape.data[:ued]) %>
+<br>
+<hr>
+Looks like you've got a few links. How many you should have really depends on the size of your business/site, but more importantly you should focus on getting quality links.</p>
+<% end %>
+            </div>
+          </li>
+          
+
+             <li>
+            <div class="timeline-time">
+              Load Times
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-info">
+                <i class="icon-spinner"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                Load Time Rankings
+              </h2>
+             <p>
+             <div id="pagespeed"></div>
+             <div id="progressbar"></div>
+              </p>
+            </div>
+          </li>
+              <li>
+            <div class="timeline-time">
+            Improve Load Times
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-primary">
+                <i class="icon-time"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+
+               Suggestions to improve page time:
+              </h2>
+           
+  
+            <div id="pageloadresults">
+          </div>
+  
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+             Resources
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-success">
+                <i class="icon-align-right"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                   <div title="The below pie chart shows you the breakdown of resources that are on your site."
+        class="resetPrice"
+        data-placement='bottom'>
+    <i class="fa fa-question-circle fa-1x"></i>
+                Resource Size Breakdown
+              </h2>
+              <p>
+        <div id="donut-example"></div>
+
+              </p>
+            </div>
+          </li>
+          
+       <!-- 
+          <li>
+            <div class="timeline-time">
+              <strong>Oct 8</strong>2:01 PM
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-danger">
+                <i class="icon-pencil"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                This is a title for this timeline post
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+              </p>
+              <p>
+                Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.
+              </p>
+              <p>
+                Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              <strong>Oct 11</strong>10:33 AM
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-success">
+                <i class="icon-camera"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                This is a title for this timeline post
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              <strong>Oct 12</strong>1:14 PM
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-primary">
+                <i class="icon-facetime-video"></i>
+              </div>
+            </div>
+            <div class="timeline-content video">
+              <h2>
+                This is a title for this timeline post
+              </h2>
+              <iframe allowfullscreen="" frameborder="0" mozallowfullscreen="" src="http://player.vimeo.com/video/16202331?title=0&amp;byline=0&amp;portrait=0" webkitallowfullscreen=""></iframe>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              <strong>Oct 18</strong>8:45 AM
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-warning">
+                <i class="icon-pencil"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing
+              </h2>
+              <p>
+                Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-time">
+              <strong>Oct 21</strong>9:55 AM
+            </div>
+            <div class="timeline-icon">
+              <div class="bg-success">
+                <i class="icon-time"></i>
+              </div>
+            </div>
+            <div class="timeline-content">
+              <h2>
+                This is a title for this timeline post
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+              </p>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- <div id="updateEmail" class="row text-center stuff"> -->
+      <!-- <div class="col-sm-4 col-sm-offset-4"> -->
+        <%#= form_for @user, id: "contact_me", remote: true do |f| %>
+          <!-- <div class="form-group"> -->
+            <%#= f.search_field :email, placeholder: 'Email', class: "form-control text-center stuff", size:"55" %>
+          <!-- </div>   -->
+          <%#= f.submit "Submit", class: "btn btn-danger stuff" %>
+        <%# end %>
+    <!-- </div>  -->
+
+
+
+
+
+    </div>
+    <div style="text-align: center" id="confirmation"></div>
+    <div style="text-align: center" id="didntsend"></div>
+
+<div class="container" style="margin-top: 50px; margin-bottom:100px;">
+
+  <div id="updateEmail" class="row text-center">
+    <div class="col-sm-4 col-sm-offset-4">
+      <p>Get Your Results Sent to You</p>
+      <%= form_tag(@user, id: "contact_me", class:"form-signin", remote: "true") do %>
+        <div class="form-group">
+          <%= text_field(:user, :email, placeholder: 'Email', class: "form-control text-center stuff", size:"55") %></p>
+        </div>
+        <%= submit_tag("Submit", class: "btn btn-custom stuff")%>
+        <% end %>
+
+         <div id='circular' style="display:none;">
+           <div id='circular_1' class='circular'></div>
+           <div id='circular_2' class='circular'></div>
+           <div id='circular_3' class='circular'></div>
+           <div id='circular_4' class='circular'></div>
+           <div id='circular_5' class='circular'></div>
+           <div id='circular_6' class='circular'></div>
+           <div id='circular_7' class='circular'></div>
+           <div id='circular_8' class='circular'></div>
+           <div class='clearfix'></div>
+        </div>
+    </div> 
+  </div>  
+</div>  
+
+
+<script>
+ 
+$(function(){
+    $("#contact_me").submit(function(){
+        $(".stuff").hide();
+        $('#circular').show();
+
+        var dataSet = $(this).serialize();
+        $.ajax({
+            type: "PATCH",
+            url: $(this).attr("action"),
+            data: dataSet,
+            success: function(){
+              $('#circular').hide();
+              $("#updateEmail").hide();
+              var itgotsent = document.getElementById("confirmation");
+              itgotsent.className = "alert alert-success" 
+              itgotsent.innerHTML = "Your Email Has Been Sent";
+            },
+            error: function(){
+              $('#circular').hide();
+              var itgotsent = document.getElementById("didntsend");
+              itgotsent.className = "alert alert-danger"
+              itgotsent.innerHTML = "Something went wrong with sending the email.";
+            }
+        });
+        return false;
+    });
+})
+
+
+</script>
+
+
+<script>
+// Specify your actual API key here:
+var API_KEY = 'google_key'
+
+// Specify the URL you want PageSpeed results for here:
+<% @website =  User.last.website %> 
+
+<% if  User.last.website.include?("http://") %>
+  var URL_TO_GET_RESULTS_FOR = '<%=@website %>';
+<%else %>
+  var URL_TO_GET_RESULTS_FOR = 'http://' + '<%=@website %>';
+<% end %> 
+
+
+var API_URL = 'https://www.googleapis.com/pagespeedonline/v1/runPagespeed?';
+var CHART_API_URL = 'http://chart.apis.google.com/chart?';
+
+// Object that will hold the callbacks that process results from the
+// PageSpeed Insights API.
+var callbacks = {}
+
+// Invokes the PageSpeed Insights API. The response will contain
+// JavaScript that invokes our callback with the PageSpeed results.
+function runPagespeed() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  var query = [
+    'url=' + URL_TO_GET_RESULTS_FOR,
+    'screenshot=true',
+    'callback=runPagespeedCallbacks',
+    'key=' + API_KEY,
+  ].join('&');
+  var a = s.src = API_URL + query;
+  document.head.insertBefore(s, null);
+}
+
+// Our JSONP callback. Checks for errors, then invokes our callback handlers.
+function runPagespeedCallbacks(result) {
+  if (result.error) {
+    var errors = result.error.errors;
+    for (var i = 0, len = errors.length; i < len; ++i) {
+      if (errors[i].reason == 'badRequest' && API_KEY == API_KEY) {
+        alert('Please specify your Google API key in the API_KEY variable.');
+      } else {
+        // NOTE: your real production app should use a better
+        // mechanism than alert() to communicate the error to the user.
+        var googleerror = document.getElementById("errors");
+// var danger = document.createElement("alert alert-danger");
+
+googleerror.className = "alert alert-danger"
+
+googleerror.innerHTML = "Sorry! An error occured while attempting to analyize your site. Please refresh the page and try again to get complete analytics";
+
+     // document.getElementById("errors").innerHTML = ;
+      }
+    }
+    return;
+    
+  }
+
+  // Dispatch to each function on the callbacks object.
+  for (var fn in callbacks) {
+    var f = callbacks[fn];
+    if (typeof f == 'function') {
+      callbacks[fn](result);
+
+    }
+  }
+}
+
+// Invoke the callback that fetches results. Async here so we're sure
+// to discover any callbacks registered below, but this can be
+// synchronous in your code.
+setTimeout(runPagespeed, 0);
+</script>
+
+<script type="text/javascript">
+callbacks.displayPageSpeedScore = function(result) {
+  
+
+  var score = result.score;
+  // Construct the query to send to the Google Chart Tools.
+    $(function() {
+    $( "#progressbar" ).progressbar({
+      value: score
+    });
+
+     var pagespeed = document.getElementById("pagespeed");
+     pagespeed.innerHTML = "Google PageSpeed Score: " + score + " out of 100";
+  });
+  // var query = [
+  //   'chtt=Page+Speed+score:+' + score,
+  //   'chs=180x100',
+  //   'cht=gom',
+  //   'chd=t:' + score,
+  //   'chxt=x,y',
+  //   'chxl=0:|' + score,
+  // ].join('&');
+  // var i = document.createElement('img');
+  // i.src = CHART_API_URL + query;
+  // document.body.insertBefore(i, null);
+};
+</script>
+<script>
+callbacks.displayScreenShot = function(result) {
+  var screenshot = result.screenshot.data;
+
+
+var s = screenshot.replace(/_/g, '/');
+
+var x = s.replace(/-/g, '+');
+
+
+//   var  base = document.getElementById("base64");
+// base.innerHTML = screenshot 
+
+$("#base64").append("img ").attr("src", "data:image/jpeg;base64," + x);
+
+}
+</script>
+
+<script>
+
+callbacks.displayTopPageSpeedSuggestions = function(result) {
+  var results = [];
+  var ruleResults = result.formattedResults.ruleResults;
+  for (var i in ruleResults) {
+    var ruleResult = ruleResults[i];
+    // Don't display lower-impact suggestions.
+    if (ruleResult.ruleImpact < 3.0) continue;
+    results.push({name: ruleResult.localizedRuleName,
+                  impact: ruleResult.ruleImpact});
+  }
+  results.sort(sortByImpact);
+  // var ul = document.createElement('ul');
+  for (var i = 0, len = results.length; i < len; ++i) {
+    var r = document.createElement('li');
+    // var lis = document.getElementById("pageloadresults").createElement("li");
+
+
+    // var pageload = document.getElementById('pageloadresults');
+
+
+var stuff = document.getElementById("pageloadresults");
+var li = document.createElement("dd");
+li.appendChild(document.createTextNode("- "+ results[i].name));
+stuff.appendChild(li);
+     // lis.innerHTML =  results[i].name;
+
+    // ul.insertBefore(r, null);
+  }
+  // if (ul.hasChildNodes()) {
+  //   document.body.insertBefore(ul, null);
+  // } else {
+  //   var div = document.createElement('div');
+  //   div.innerHTML = 'No high impact suggestions. Good job!';
+  //   document.body.insertBefore(div, null);
+  // }
+};
+
+
+
+
+// Helper function that sorts results in order of impact.
+function sortByImpact(a, b) { return b.impact - a.impact; }
+</script>
+<script>
+var RESOURCE_TYPE_INFO = [
+  {label: 'JavaScript', field: 'javascriptResponseBytes', color: 'e2192c'},
+  {label: 'Images', field: 'imageResponseBytes', color: 'f3ed4a'},
+  {label: 'CSS', field: 'cssResponseBytes', color: 'ff7008'},
+  {label: 'HTML', field: 'htmlResponseBytes', color: '43c121'},
+  {label: 'Flash', field: 'flashResponseBytes', color: 'f8ce44'},
+  {label: 'Text', field: 'textResponseBytes', color: 'ad6bc5'},
+  {label: 'Other', field: 'otherResponseBytes', color: '1051e8'},
+];
+
+callbacks.displayResourceSizeBreakdown = function(result) {
+  var stats = result.pageStats;
+  var labels = [];
+  var data = [];
+  var colors = [];
+  var totalBytes = 0;
+  var largestSingleCategory = 0;
+  for (var i = 0, len = RESOURCE_TYPE_INFO.length; i < len; ++i) {
+    var label = RESOURCE_TYPE_INFO[i].label;
+    var field = RESOURCE_TYPE_INFO[i].field;
+    var color = RESOURCE_TYPE_INFO[i].color;
+    if (field in stats) {
+      var val = Number(stats[field]);
+      totalBytes += val;
+      if (val > largestSingleCategory) largestSingleCategory = val;
+      labels.push(label);
+      data.push(val);
+      colors.push(color);
+    }
+  }
+
+    Morris.Donut({
+  element: 'donut-example',
+  data: [
+
+      {label: labels[0], value:  data[0]},
+      {label: labels[1], value:  data[1]},
+      {label: labels[2], value:  data[2]},
+      {label: labels[3], value:  data[3]},
+      {label: labels[4], value:  data[4]}
+    ],
+    formatter: function(y){return "Bytes: " + y },
+    resize: true
+});
+
+  // Construct the query to send to the Google Chart Tools.
+  // var query = [
+  //   'chs=300x140',
+  //   'cht=p3',
+  //   'chts=' + ['000000', 16].join(','),
+  //   'chco=' + colors.join('|'),
+  //   'chd=t:' + data.join(','),
+  //   'chdl=' + labels.join('|'),
+  //   'chdls=000000,14',
+  //   'chp=1.6',
+  //   'chds=0,' + largestSingleCategory,
+  // ].join('&');
+  // var i = document.createElement('img');
+  // i.src = 'http://chart.apis.google.com/chart?' + query;
+  // document.body.insertBefore(i, null);
+};
+
+
+</script>
+
+<!-- <div id="pageloadresults">
+Suggestions to improve load times:
+</div> -->
