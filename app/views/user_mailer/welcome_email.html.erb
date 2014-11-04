@@ -46,9 +46,9 @@
                 Cancal Url
               </h2>
               <p>
-                <% if @linkscape.data[:canonical_url] == '' %>
+                <% if @linkscape.data[:canonical_url] == " " %>
 <br>
-              Cripes! Do you realise that there are two versions of all your pages - one with 'www' and one without? You need to choose a 'canonical' format and redirect to this version - but don't expect me to explain exactly how here; we've only got a limited amount of characters
+              Holy cow! Do you realise that there are two versions of all your pages - one with 'www' and one without? You need to choose a 'canonical' format and redirect to this version - but don't expect me to explain exactly how here; we've only got a limited amount of characters
               <% else %>
 Bravo! Whether you meant it or not, it looks like there's a redirect in place to ensure that only one version of your page loads whether or not you use the 'www' bit.
               <% end %>
