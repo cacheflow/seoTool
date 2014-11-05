@@ -73,8 +73,8 @@ $(function() {
 <div class="container">
   <div class="row">
     <div class=".col-md-4">
-      <!-- <img id="logoindex" src="<%=image_path("el-classificado-logo.png") %>"> </img> -->
-      <%=link_to image_tag("el-classificado-logo.png"), root_path, id: "logoindex" %> 
+      <!-- <img id="logoindex" src="<%=image_path("ec-logo.png") %>"> </img> -->
+      <%=link_to image_tag("ec -logo.png"), root_path, id: "logoindex" %> 
     </div>
   </div>
 </div>
@@ -614,7 +614,7 @@ $(function(){
               $('#circular').hide();
               var itgotsent = document.getElementById("didntsend");
               itgotsent.className = "alert alert-danger"
-              itgotsent.innerHTML = "Something went wrong with sending the email.";
+              itgotsent.innerHTML = "Something went wrong with sending the email. Try refreshing the page again";
             }
         });
         return false;

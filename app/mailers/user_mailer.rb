@@ -8,6 +8,6 @@ class UserMailer < ActionMailer::Base
     @anchorlinks = anchorlinks
     @top = top
   	@url = 'fake.com/login'
-  	mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+  	mail(to: @user.email, subject: 'Welcome Lex to my Awesome Site')
   end
 end
