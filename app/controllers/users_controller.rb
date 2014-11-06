@@ -29,7 +29,7 @@ end
 
   def create
     @user = User.new(params.require(:user).permit(:website))
-    
+    if @user.save
     redirect_to users_path
   end
  
