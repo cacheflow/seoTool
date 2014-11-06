@@ -52,7 +52,7 @@
     position: relative;
     max-width: 90%;
     height: 200px;
-    margin: 136px auto;
+    margin: 120px auto;
     overflow: hidden;
   }
   
@@ -414,7 +414,7 @@ Looks like you've got a few links. How many you should have really depends on th
               </h2>
            
   
-            <div id="pageloadresults">
+            <div id="pageloadResults">
           </div>
   
             </div>
@@ -763,16 +763,16 @@ callbacks.displayTopPageSpeedSuggestions = function(result) {
   // var ul = document.createElement('ul');
   for (var i = 0, len = results.length; i < len; ++i) {
     var r = document.createElement('li');
-    // var lis = document.getElementById("pageloadresults").createElement("li");
+    // var lis = document.getElementById("pageloadResults").createElement("li");
 
 
-    // var pageload = document.getElementById('pageloadresults');
+    // var pageload = document.getElementById('pageloadResults');
 
 
-var stuff = document.getElementById("pageloadresults");
-var li = document.createElement("dd");
+var pageLoad = document.getElementById("pageloadResults");
+var li = document.createElement("gotResults");
 li.appendChild(document.createTextNode("- "+ results[i].name));
-stuff.appendChild(li);
+pageLoad.appendChild(li);
      // lis.innerHTML =  results[i].name;
 
     // ul.insertBefore(r, null);
@@ -858,6 +858,6 @@ callbacks.displayResourceSizeBreakdown = function(result) {
 
 </script>
 
-<!-- <div id="pageloadresults">
+<!-- <div id="pageloadResults">
 Suggestions to improve load times:
 </div> -->

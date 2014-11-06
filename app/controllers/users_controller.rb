@@ -5,7 +5,12 @@ class UsersController < ApplicationController
   def index
    @users = User.all
     api
-  end 
+    respond_to do |format|
+      if @users
+        UserMailer.welcome_email(@user).deliver 
+      end 
+    end
+    end 
 
 
 
@@ -29,7 +34,7 @@ end
 
   def create
     @user = User.new(params.require(:user).permit(:website))
-    @user.save
+    
     redirect_to users_path(@user)  
   end
  
