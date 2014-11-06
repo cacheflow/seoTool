@@ -32,6 +32,7 @@ end
     if @user.save
     redirect_to users_path
   end
+end
  
  
 
