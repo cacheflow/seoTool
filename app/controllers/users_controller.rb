@@ -5,11 +5,11 @@ class UsersController < ApplicationController
   def index
    @users = User.all
     api
-    respond_to do |format|
-      if @users
-        UserMailer.welcome_email(@user).deliver 
-      end 
-    end
+    # respond_to do |format|
+    #   if @users
+    #     UserMailer.welcome_email(@user).deliver 
+    #   end 
+    # end
     end 
 
 
