@@ -5,8 +5,13 @@ class UsersController < ApplicationController
   def index
    @users = User.all
     api
+    # current_url
   end 
 
+
+  def current_url 
+    @url = request.original_url 
+  end 
 
 
  def api 
