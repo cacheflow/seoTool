@@ -2,20 +2,11 @@ class UsersController < ApplicationController
 
 
 
-  def index
-   @users = User.all
-    api
-    # current_url
-  end 
-
-
-  def current_url 
-    @url = request.original_url 
-  end 
 
 
  def api 
-  @websiteurl = User.last.website
+  @user = User.find(params[:id])
+  @websiteurl = @user.website
   client = Linkscape::Client.new(:accessID => ENV["ACCESS_ID"], :secret => ENV["API_KEY"])
   @linkscape = client.urlMetrics(@websiteurl, :cols => :all)
   @toppages = client.topPages(@websiteurl, :page, :cols => :all, :limit => 5)
@@ -26,6 +17,7 @@ end
 
   def show
     @users = User.find(params[:id])
+    api
   end
 
 def new 
@@ -35,24 +27,13 @@ end
   def create
     @user = User.new(params.require(:user).permit(:website))
     if @user.save
-    redirect_to users_path
+    redirect_to user_path(@user)
   end
 end
  
  
 
 
-
-  def edit
-  end
-
-  def update
-
-  end
-
-  def destroy
-
-  end
   
   private 
   def user_params 

@@ -14,9 +14,12 @@
 			<%= form_for @user, class:"form-signin" do |f| %>
 				<div class="form-group">
 					<%= f.search_field :website, placeholder: 'Analyze a site', class: "form-control text-center stuff", size:"140" %>
+					
 				</div>  
 				<%= f.submit "Submit", class: "btn btn-custom stuff" %>
 			<% end %>
+
+
 
 				<div id='circular' style="display:none;">
 					<div id='circular_1' class='circular'></div>

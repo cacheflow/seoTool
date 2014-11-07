@@ -26,32 +26,37 @@
 
 
 <style>
+
 .laptop-container{
   margin: 0 auto;
+  min-height: 10em;
   height: 34em;
-  width: 55%;
+  max-height: 400px;
+  max-width: 750px;
   background: url(assets/laptop.png) no-repeat center center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: 100% auto;
-  position: relative;
+/*  background-size: 100% auto;
+*/  position: relative;
 }
   .laptop-screen{
     width:auto;
     height:100%;
     text-align:center;
-    margin:0 auto;
+    margin: 0 auto;
+    max-width: 100%;
     /*padding: 0 0 44px 0;*/
   }
-
   .img-responsive{
-    position: inherit;
-    margin: 102px auto;
+    position: relative;
+    max-width: 90%;
+    height: 200px;
+    margin: 90px auto;
     overflow: hidden;
   }
-/*
-  #base64 {
+  
+ /* #base64 {
     width: 100%;
     height: 100%;
   }*/
@@ -63,6 +68,7 @@ $(function() {
     $('.resetPrice').tooltip();
 });
 </script>
+
 
 
 <div class="container">
@@ -86,7 +92,9 @@ $(function() {
   
   <div class="laptop-container">
     <div class="laptop-screen">
-      <img class="img-responsive" id="base64"></img>
+        <div class = "laptop-logo">
+            <img class="img-responsive" id="base64"></img>
+        </div>
     </div>
   </div>
 
@@ -120,9 +128,9 @@ $(function() {
               <p>
                 <% if @linkscape.data[:canonical_url] == '' %>
 <br>
-              Cripes! Do you realise that there are two versions of all your pages - one with 'www' and one without? You need to choose a 'canonical' format and redirect to this version - but don't expect me to explain exactly how here; we've only got a limited amount of characters
+              Uh oh! Do you realise that there are two versions of your site - one with 'www' and one without? You need to choose a 'canonical' format and redirect to that version - but don't expect me to explain exactly how to do that. I mean, I could, but it'll cost you a pretty penny. 
               <% else %>
-Bravo! Whether you meant it or not, it looks like there's a redirect in place to ensure that only one version of your page loads whether or not you use the 'www' bit.
+You rock! You have a redirect in place to ensure that only one version of your page loads whether or not you use the 'www'.
               <% end %>
               </p>
             </div>
@@ -138,7 +146,7 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
             </div>
             <div class="timeline-content">
               <h2>
-               <div title="Domain authority is a measure of the power of a domain name and is one of many search engine ranking factors. Domain authority is based on three factors: Age, Popularity, and Size. Below you'll find your score based on a normalized 100-point score representing the likelihood of a page to rank well in search engine results."
+               <div title="Domain authority is a measure of the power of a domain name and is one of many search engine ranking factors. Domain authority is based on three factors: Age, Popularity, and Size. Below you'll find your score based on a 100-point score representing the likelihood of a page to rank well in search engine results."
         class="resetPrice"
         data-placement='bottom'>
     <i class="fa fa-question-circle fa-1x"></i>
@@ -150,21 +158,21 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
                 <hr>
                 <% if (80..100).include?(@linkscape.data[:pda]) %>
                   
-                  Wowzers! You must have some great links - what you have there is a pretty authoritative site.
+                  That's what's I'm talking about! You have some great links on your site- If I had to say, I'd call it pretty authoratitve. 
                   <% elsif  (50..79).include?(@linkscape.data[:pda]) %> 
-                Your domain authority is at a medium level. Don't worry about it too much, particularly if your site or business is relatively small, but as more people link to you your site will start to become more authoritative and trusted in it's own right.</p>
+                Your domain authority is at a medium level. Don't worry about it too much, particularly if your site or business is relatively small, but as more people link to you your site will start to become more authoritative and trusted. </p>
                   
-                  <p>In the meantime, here are some tips to help your site grow:
+                  <p>In the meantime, here are some tips to help you along the way:
                  <br>
                  
                                   
-                  - Ensure that your technical SEO is in place.
+                  - Make sure you that you followed SEO conventions. 
                   <br>
-                  - Create lots of linkable content.
+                  - Create a ton of linkable content.
                   <br>
                   - Develop strong internal linking.
                   <br>
-                  - Regularly remove toxic backlinks.</p>
+                  - Regularly remove toxic backlinks. These are the links created by bribing someone to link to your page in return for money or a favor. </p>
                   
                   <% else%>
                   <p>Your domain authority is very low! Don't worry about it too much, particularly if your site or business is relatively small, but as more people link to you your site will start to become more authoritative and trusted in it's own right.</p>
@@ -207,7 +215,7 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
 
   <% if @anchorlinks.data.first  == nil %>
 
-  This site doesn't have any anchor links.
+  This site doesn't have any anchor links. :( 
   <% else %>
 <table class="table">
                   <thead>
@@ -251,18 +259,18 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
             <div class="timeline-content">
               <p>    
 <% if @toppages.data.first  == nil %>
-<h2>  <div title="Displays the top 5 pages that are performing the best on your domain."
+<h2>  <div title="Displays the top pages that are performing the best on your domain."
         class="resetPrice"
         data-placement='bottom'>
     <i class="fa fa-question-circle fa-1x"></i>
-                   Top 5 Pages</h2>    
-                   <p> Unfortunately, it seems that your site is too small to find out the top pages on your domain   
+                   Top Pages</h2>    
+                   <p> Unfortunately, it seems that your site is too small to find out the top pages.
 <% else %> 
 
 <table class="table">
                   <thead>
                     <th>
-                  <h2>  <div title="Displays the top 5 pages that are performing the best on your domain."
+                  <h2>  <div title="Displays the top pages that are performing the best on your domain."
         class="resetPrice"
         data-placement='bottom'>
     <i class="fa fa-question-circle fa-1x"></i>
@@ -310,7 +318,7 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
         data-placement='bottom'>
     <i class="fa fa-question-circle fa-1x"></i>Top Referring Links</h2>
     <p>
-    Doesn't look like anyone is linking to to this site!
+    Doesn't look like anyone is linking to this site!
     </p>
 
 <% else %>
@@ -352,7 +360,7 @@ Bravo! Whether you meant it or not, it looks like there's a redirect in place to
             </div>
             <div class="timeline-content">
               <h2>
-                 <div title="The number of external links to the URL, including nofollowed links. In layman's terms, if another website links to you, this is considered an external link to your site. Similarly, if you link out to another website, this is also considered an external link."
+                 <div title="The number of external links to the URL. In layman's terms, if another website links to you, this is considered an external link to your site. Similarly, if you link out to another website, this is also considered an external link."
         class="resetPrice"
         data-placement='bottom'>
     <i class="fa fa-question-circle fa-1x"></i>
@@ -407,7 +415,7 @@ Looks like you've got a few links. How many you should have really depends on th
               </h2>
            
   
-            <div id="pageloadresults">
+            <div id="pageloadResults">
           </div>
   
             </div>
@@ -583,6 +591,8 @@ Looks like you've got a few links. How many you should have really depends on th
   </div>  
 </div>  
 
+<%= request.original_url %> 
+ 
 
 <script>
  
@@ -607,7 +617,7 @@ $(function(){
               $('#circular').hide();
               var itgotsent = document.getElementById("didntsend");
               itgotsent.className = "alert alert-danger"
-              itgotsent.innerHTML = "Something went wrong with sending the email.";
+              itgotsent.innerHTML = "Something went wrong with sending the email. Try refreshing the page again";
             }
         });
         return false;
@@ -620,15 +630,14 @@ $(function(){
 
 <script>
 // Specify your actual API key here:
-var API_KEY = "AIzaSyDVO23D_GF2m9EKT6qfzm2UvYs8afZsk"
+var API_KEY = "AIzaSyAcVobYKOdT4ZJGAVqSq06VrrgxPDwKJBY"
 
 // Specify the URL you want PageSpeed results for here:
-<% @website =  User.last.website %> 
 
-<% if  User.last.website.include?("http://") %>
-  var URL_TO_GET_RESULTS_FOR = '<%=@website %>';
+<% if  @websiteurl.include?("http://") %>
+  var URL_TO_GET_RESULTS_FOR = '<%=@websiteurl %>';
 <%else %>
-  var URL_TO_GET_RESULTS_FOR = 'http://' + '<%=@website %>';
+  var URL_TO_GET_RESULTS_FOR = 'http://' + '<%=@websiteurl} %>';
 <% end %> 
 
 
@@ -735,7 +744,7 @@ var x = s.replace(/-/g, '+');
 //   var  base = document.getElementById("base64");
 // base.innerHTML = screenshot 
 
-$("#base64").append("img ").attr("src", "data:image/jpeg;base64," + x);
+$("#base64").append(".laptop-screen ").attr("src", "data:image/jpeg;base64," + x);
 
 }
 </script>
@@ -756,16 +765,16 @@ callbacks.displayTopPageSpeedSuggestions = function(result) {
   // var ul = document.createElement('ul');
   for (var i = 0, len = results.length; i < len; ++i) {
     var r = document.createElement('li');
-    // var lis = document.getElementById("pageloadresults").createElement("li");
+    // var lis = document.getElementById("pageloadResults").createElement("li");
 
 
-    // var pageload = document.getElementById('pageloadresults');
+    // var pageload = document.getElementById('pageloadResults');
 
 
-var stuff = document.getElementById("pageloadresults");
-var li = document.createElement("dd");
+var pageLoad = document.getElementById("pageloadResults");
+var li = document.createElement("gotResults");
 li.appendChild(document.createTextNode("- "+ results[i].name));
-stuff.appendChild(li);
+pageLoad.appendChild(li);
      // lis.innerHTML =  results[i].name;
 
     // ul.insertBefore(r, null);
@@ -851,6 +860,6 @@ callbacks.displayResourceSizeBreakdown = function(result) {
 
 </script>
 
-<!-- <div id="pageloadresults">
+<!-- <div id="pageloadResults">
 Suggestions to improve load times:
 </div> -->
