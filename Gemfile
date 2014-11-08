@@ -17,6 +17,7 @@ gem 'did_you_mean', group: [:development, :test]
 gem "figaro"
 gem "bootstrap_form"
 gem "delayed_job"
+gem "letter_opener"
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 # Use jquery as the JavaScript library

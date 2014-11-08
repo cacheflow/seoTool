@@ -126,11 +126,10 @@ $(function() {
 
               </h2>
               <p>
-                <% if @linkscape.data[:canonical_url] == '' %>
-<br>
-              Uh oh! Do you realise that there are two versions of your site - one with 'www' and one without? You need to choose a 'canonical' format and redirect to that version - but don't expect me to explain exactly how to do that. I mean, I could, but it'll cost you a pretty penny. 
+                <% if @response.data[:canonical_url]  %>
+              You rock! You have a redirect in place to ensure that only one version of your page loads whether or not you use the 'www'.
               <% else %>
-You rock! You have a redirect in place to ensure that only one version of your page loads whether or not you use the 'www'.
+              Uh oh! Do you realise that there are two versions of your site - one with 'www' and one without? You need to choose a 'canonical' format and redirect to that version - but don't expect me to explain exactly how to do that. I mean, I could, but it'll cost you a pretty penny. 
               <% end %>
               </p>
             </div>
@@ -153,13 +152,13 @@ You rock! You have a redirect in place to ensure that only one version of your p
               Domain Authority
               </h2>
                 <p>
-                Site score:  <%= @linkscape.data[:pda]  %>
+                Site score:  <%= @response.data[:pda]  %>
                 
                 <hr>
-                <% if (80..100).include?(@linkscape.data[:pda]) %>
+                <% if (80..100).include?(@response.data[:pda]) %>
                   
                   That's what's I'm talking about! You have some great links on your site- If I had to say, I'd call it pretty authoratitve. 
-                  <% elsif  (50..79).include?(@linkscape.data[:pda]) %> 
+                  <% elsif  (50..79).include?(@response.data[:pda]) %> 
                 Your domain authority is at a medium level. Don't worry about it too much, particularly if your site or business is relatively small, but as more people link to you your site will start to become more authoritative and trusted. </p>
                   
                   <p>In the meantime, here are some tips to help you along the way:
@@ -256,9 +255,10 @@ You rock! You have a redirect in place to ensure that only one version of your p
                 <i class=" icon-star "></i>
               </div>
             </div>
+
             <div class="timeline-content">
               <p>    
-<% if @toppages.data.first  == nil %>
+<% if @topPages == []  %>
 <h2>  <div title="Displays the top pages that are performing the best on your domain."
         class="resetPrice"
         data-placement='bottom'>
@@ -274,7 +274,7 @@ You rock! You have a redirect in place to ensure that only one version of your p
         class="resetPrice"
         data-placement='bottom'>
     <i class="fa fa-question-circle fa-1x"></i>
-                   Top 5 Pages</h2>
+                   Top Pages</h2>
                     </th> 
                  
 
@@ -283,7 +283,7 @@ You rock! You have a redirect in place to ensure that only one version of your p
                   <tbody>
 
 
-                    <%@toppages.data.each do |d| %>
+                    <%@topPages.data.each do |d| %>
                     <tr>
                       <td>
                         <%= d[:url] %>
@@ -298,6 +298,8 @@ You rock! You have a redirect in place to ensure that only one version of your p
               </p>
             </div>
           </li>
+
+
           <li>
 
             <div class="timeline-time">
@@ -349,6 +351,7 @@ You rock! You have a redirect in place to ensure that only one version of your p
                 <% end %>
         <%#= debug(@top.data) %>
           </li>
+
           <li>
             <div class="timeline-time">
               External Links
@@ -367,11 +370,11 @@ You rock! You have a redirect in place to ensure that only one version of your p
                Number of External Links
               </h2>
               
-                <% if @linkscape.data[:ued] == 0 %>
+                <% if @response.data[:ued] == 0 %>
                 <p>Doesn't look like you have any external links! </p>
                 <% else %>
 <p>
- <%=  number_with_delimiter(@linkscape.data[:ued]) %>
+ <%=  number_with_delimiter(@response.data[:ued]) %>
 <br>
 <hr>
 Looks like you've got a few links. How many you should have really depends on the size of your business/site, but more importantly you should focus on getting quality links.</p>
@@ -382,7 +385,7 @@ Looks like you've got a few links. How many you should have really depends on th
 
              <li>
             <div class="timeline-time">
-              Load Times
+              Load Time
             </div>
             <div class="timeline-icon">
               <div class="bg-info">
@@ -401,7 +404,7 @@ Looks like you've got a few links. How many you should have really depends on th
           </li>
               <li>
             <div class="timeline-time">
-            Improve Load Times
+            Improve Load Time
             </div>
             <div class="timeline-icon">
               <div class="bg-primary">
@@ -563,7 +566,7 @@ Looks like you've got a few links. How many you should have really depends on th
     </div>
     <div style="text-align: center" id="confirmation"></div>
     <div style="text-align: center" id="didntsend"></div>
-
+<!-- 
 <div class="container" style="margin-top: 50px; margin-bottom:100px;">
 
   <div id="updateEmail" class="row text-center">
@@ -574,7 +577,7 @@ Looks like you've got a few links. How many you should have really depends on th
           <%= text_field(:user, :email, placeholder: 'Email', class: "form-control text-center stuff", size:"55") %></p>
         </div>
         <%= submit_tag("Submit", class: "btn btn-custom stuff")%>
-        <% end %>
+        <% end %> -->
 
          <div id='circular' style="display:none;">
            <div id='circular_1' class='circular'></div>

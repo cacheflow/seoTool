@@ -1,9 +1,9 @@
 class UserMailer < ActionMailer::Base
-  default from: "l.alexander10@gmail.com"
+  default from: "workemailex@gmail.com"
 
   def welcome_email(user)
-  	@user = user
   	# @url = request.original_url 	 
-  	mail(to: @user.email, subject: 'Welcome Lex to my Awesome Site')
+  	# attachments.inline["El Clasficiado"] = File.read("../assets/images/ec-logo.png")
+  	mail to: user.email, subject: "SEO Results"
   end
 end
