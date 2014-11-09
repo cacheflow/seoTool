@@ -29,7 +29,6 @@ end
     respond_to do |format| 
     if @user.save
       UserMailer.welcome_email(@user).deliver
-      format.html {redirect_to(user_path(@user), notice: "Hold on a few seconds. We're analyzing this for you. We'll send you the results when we're done.") }
   end
 end
 end

@@ -3,9 +3,6 @@ class User < ActiveRecord::Base
 
 validates :website, :email, presence: true 
 
-def current 
-@current = request.original_url 
-end 
 
 
 end
