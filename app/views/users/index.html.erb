@@ -33,7 +33,7 @@
   height: 34em;
   max-height: 400px;
   max-width: 750px;
-  background: url(assets/laptop.png) no-repeat center center; 
+  background: url(assets/images/laptop.png) no-repeat center center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -79,11 +79,11 @@ $(function() {
     </div>
   </div>
 </div>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
 
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
@@ -591,7 +591,6 @@ Looks like you've got a few links. How many you should have really depends on th
   </div>  
 </div>  
 
-<%= request.original_url %> 
  
 
 <script>
@@ -745,7 +744,7 @@ var x = s.replace(/-/g, '+');
 //   var  base = document.getElementById("base64");
 // base.innerHTML = screenshot 
 
-$("#base64").append(".laptop-screen ").attr("src", "data:image/jpeg;base64," + x);
+$("#base64").append(".laptop-screen").attr("src", "data:image/jpeg;base64," + x);
 
 }
 </script>

@@ -26,16 +26,13 @@ end
 
   def create
     @user = User.new(params.require(:user).permit(:website, :email))
-    respond_to do |format| 
     if @user.save
-      UserMailer.welcome_email(@user).deliver
+      SeoMailer.seo_analysis(@user).deliver
+      redirect_to @user
+    end
   end
-end
-end
- 
- 
 
-
+ 
   
   private 
   def user_params 

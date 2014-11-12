@@ -1,8 +1,8 @@
 module ApplicationHelper
 
-def current 
-@current = request.original_url 
-end 
+# def current 
+# @current = request.original_url 
+# end 
 
 
 end
