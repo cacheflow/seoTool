@@ -14,7 +14,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
    config.action_mailer.default_url_options = {
-    :host => 'https://ecseotool.herokuapp.com',
+    :host => 'ecseotool.herokuapp.com',
     :only_path => false
   }
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
@@ -73,7 +73,7 @@ Rails.application.configure do
       domain:               'gmail.com',
       user_name:            ENV["EMAIL"],
       password:              ENV["PASSWORD"],
-      authentication:       'plain',
+      authentication:       :login,
       enable_starttls_auto: true  }
 
   # Send deprecation notices to registered listeners.
