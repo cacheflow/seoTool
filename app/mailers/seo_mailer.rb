@@ -7,7 +7,7 @@ class SeoMailer < ActionMailer::Base
   #   en.seo_mailer.seo_analysis.subject
   #
   def seo_analysis(user)
-    @user = User 
+    @user = user 
     # current_site = user.find_by()
     mail to: user.email, subject: "Here are your site results."
   end
