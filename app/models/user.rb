@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
 validates :website, :email, presence: true 
 
 
-
 end
 
 
