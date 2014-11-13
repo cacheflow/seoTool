@@ -73,7 +73,7 @@ Rails.application.configure do
       user_name:            ENV["EMAIL"],
       password:              ENV["PASSWORD"],
       authentication:       "plain",
-      openssl_verify_mode: "none"
+      openssl_verify_mode: "none",
       enable_starttls_auto: true  }
 
   # Send deprecation notices to registered listeners.
