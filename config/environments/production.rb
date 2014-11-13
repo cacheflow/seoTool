@@ -72,7 +72,8 @@ Rails.application.configure do
       domain:               'gmail.com',
       user_name:            ENV["EMAIL"],
       password:              ENV["PASSWORD"],
-      authentication:       :login,
+      authentication:       "plain",
+      openssl_verify_mode: "none"
       enable_starttls_auto: true  }
 
   # Send deprecation notices to registered listeners.
