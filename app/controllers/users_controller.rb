@@ -28,7 +28,7 @@ end
     @user = User.new(params.require(:user).permit(:website, :email))
     if @user.save
       SeoMailer.seo_analysis(@user).deliver
-      redirect_to @user_path 
+      redirect_to @user
     end
   end
 
