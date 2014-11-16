@@ -9,6 +9,9 @@ class SeoMailer < ActionMailer::Base
   def seo_analysis(user)
     @user = user 
     # current_site = user.find_by()
-    mail to: user.email, subject: "Here are your site results."
+    attachments.inline['eclogo.png'] = File.read('app/assets/images/ec-logo.png')
+    mail to: user.email, subject: "SEO Results"
+
+
   end
 end

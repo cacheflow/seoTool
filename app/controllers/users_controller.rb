@@ -2,8 +2,6 @@ class UsersController < ApplicationController
 
 
 
-
-
  def api 
   @user = User.find(params[:id])
   @websiteurl = @user.website
@@ -29,6 +27,9 @@ end
     if @user.save
       SeoMailer.seo_analysis(@user).deliver
       redirect_to @user
+    else 
+      flash[:notice] = "Looks like you did something wrong!"
+      redirect_to root_path
     end
   end
 
