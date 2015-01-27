@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -16,7 +16,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem "httparty"
 gem 'bootstrap-sass'
 gem "sass-rails"
-gem 'did_you_mean', group: [:development, :test]
 gem "figaro"
 gem "bootstrap_form"
 gem "delayed_job"

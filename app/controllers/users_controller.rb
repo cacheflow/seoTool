@@ -25,7 +25,7 @@ end
   def create
     @user = User.new(params.require(:user).permit(:website, :email))
     if @user.save
-      SeoMailer.seo_analysis(@user).deliver
+      # SeoMailer.seo_analysis(@user).deliver
       redirect_to @user
     else 
       flash[:notice] = "Looks like you did something wrong!"
