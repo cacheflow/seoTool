@@ -15,7 +15,7 @@ end
 
   def show
     @users = User.find(params[:id])
-    api
+    
   end
 
 def new 
